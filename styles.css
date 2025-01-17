@@ -154,3 +154,29 @@ nav img {
 nav img:hover {
   opacity: 0.9;
 }
+
+/* Email link styling */
+address a[href^="mailto:"] {
+  transition: color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+address a[href^="mailto:"]:hover {
+  color: #ef4444;
+}
+
+/* Visitor counter styling */
+#visitor-count {
+  font-family: monospace;
+  font-size: 1.1em;
+  text-shadow: 0 0 5px rgba(239, 68, 68, 0.5);
+}
+
+.visitor-counter {
+  transition: transform 0.3s ease;
+}
+
+.visitor-counter:hover {
+  transform: scale(1.05);
+}

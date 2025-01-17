@@ -13,19 +13,36 @@
     <nav class="bg-white dark:bg-gray-800 shadow-lg fixed w-full z-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
+          <!-- Logo and company name -->
           <div class="flex items-center space-x-4">
-            <!-- Added company logo -->
             <img src="WhatsApp Image 2025-01-17 at 08.38.48 (1).jpeg" 
                  alt="SF Motors Logo" 
                  class="h-12 w-auto">
             <span class="text-2xl font-bold text-red-600 dark:text-red-500">SF MOTORS</span>
           </div>
           
+          <!-- Desktop Navigation -->
           <div class="hidden md:flex items-center space-x-4">
-            <button @click="activeSection = 'videos'" class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">Vídeos</button>
-            <button @click="activeSection = 'images'" class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">Imagens</button>
-            <button @click="activeSection = 'about'" class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">Sobre Nós</button>
-            <button @click="activeSection = 'services'" class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">Nossos Serviços</button>
+            <button @click="activeSection = 'videos'" 
+                    :class="{'text-red-600': activeSection === 'videos'}" 
+                    class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
+              Vídeos
+            </button>
+            <button @click="activeSection = 'images'" 
+                    :class="{'text-red-600': activeSection === 'images'}" 
+                    class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
+              Imagens
+            </button>
+            <button @click="activeSection = 'about'" 
+                    :class="{'text-red-600': activeSection === 'about'}" 
+                    class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
+              Sobre Nós
+            </button>
+            <button @click="activeSection = 'services'" 
+                    :class="{'text-red-600': activeSection === 'services'}" 
+                    class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
+              Nossos Serviços
+            </button>
             <button @click="isDarkMode = !isDarkMode" 
                     class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700"
                     x-on:click="isDarkMode ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark')">
@@ -35,6 +52,42 @@
               <svg x-show="isDarkMode" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"/>
               </svg>
+            </button>
+          </div>
+
+          <!-- Mobile menu button -->
+          <div class="md:hidden flex items-center">
+            <button @click="isMenuOpen = !isMenuOpen" class="text-gray-700 dark:text-gray-300">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path :class="{'hidden': isMenuOpen, 'inline-flex': !isMenuOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                <path :class="{'hidden': !isMenuOpen, 'inline-flex': isMenuOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div :class="{'block': isMenuOpen, 'hidden': !isMenuOpen}" class="md:hidden">
+          <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <button @click="activeSection = 'videos'; isMenuOpen = false" 
+                    :class="{'text-red-600': activeSection === 'videos'}"
+                    class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
+              Vídeos
+            </button>
+            <button @click="activeSection = 'images'; isMenuOpen = false" 
+                    :class="{'text-red-600': activeSection === 'images'}"
+                    class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
+              Imagens
+            </button>
+            <button @click="activeSection = 'about'; isMenuOpen = false" 
+                    :class="{'text-red-600': activeSection === 'about'}"
+                    class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
+              Sobre Nós
+            </button>
+            <button @click="activeSection = 'services'; isMenuOpen = false" 
+                    :class="{'text-red-600': activeSection === 'services'}"
+                    class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
+              Nossos Serviços
             </button>
           </div>
         </div>
@@ -57,12 +110,14 @@
               </p>
             </div>
             <div class="space-y-4">
-              <a href="#contact" class="glow-button bg-red-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-red-700 transition-all duration-300 block w-max mx-auto">
+              <button @click="activeSection = 'contact'" 
+                      class="glow-button bg-red-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-red-700 transition-all duration-300 block w-max mx-auto">
                 Entre em Contato
-              </a>
-              <a href="#services" class="bg-transparent border-2 border-red-600 text-red-600 dark:text-red-500 px-8 py-3 rounded-full text-lg font-semibold hover:bg-red-600 hover:text-white transition-all duration-300 block w-max mx-auto">
+              </button>
+              <button @click="activeSection = 'services'" 
+                      class="bg-transparent border-2 border-red-600 text-red-600 dark:text-red-500 px-8 py-3 rounded-full text-lg font-semibold hover:bg-red-600 hover:text-white transition-all duration-300 block w-max mx-auto">
                 Nossos Serviços
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -291,16 +346,43 @@
                     Telefone: (47) 99925-3539
                   </a>
                 </p>
+                <p class="mb-2">
+                  <a href="mailto:sfmotors.mecanica@gmail.com" class="hover:text-red-500">
+                    Email: sfmotors.mecanica@gmail.com
+                  </a>
+                </p>
               </address>
             </div>
           </div>
         </div>
         <div class="text-center mt-8 border-t border-gray-700 pt-8">
+          <div class="flex justify-center items-center mb-4 space-x-2">
+            <div class="bg-gray-700 px-4 py-2 rounded-lg">
+              <div class="flex items-center space-x-2">
+                <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+                <span class="text-gray-300">Visitantes:</span>
+                <span id="visitor-count" class="text-red-500 font-bold">0</span>
+              </div>
+            </div>
+          </div>
           <p>&copy; 2024 SF MOTORS - MECÂNICA. Todos os direitos reservados.</p>
           <p class="text-sm text-gray-400 mt-2">Powered by WordPress | Theme: Astra by Brainstorm Force</p>
         </div>
       </div>
     </footer>
+
+    <!-- Add visitor counter script -->
+    <script>
+      // Simple visitor counter using localStorage
+      document.addEventListener('DOMContentLoaded', function() {
+        let count = localStorage.getItem('visitorCount') || 0;
+        count = parseInt(count) + 1;
+        localStorage.setItem('visitorCount', count);
+        document.getElementById('visitor-count').textContent = count;
+      });
+    </script>
   </div>
 </body>
 </html>
