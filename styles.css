@@ -1,0 +1,156 @@
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px #ef4444,
+                0 0 10px #ef4444,
+                0 0 15px #ef4444;
+  }
+  50% {
+    box-shadow: 0 0 10px #ef4444,
+                0 0 20px #ef4444,
+                0 0 30px #ef4444;
+  }
+}
+
+.glow-button {
+  animation: glow 2s infinite;
+}
+
+.glow-button:hover {
+  animation: none;
+  box-shadow: 0 0 15px #ef4444;
+}
+
+/* Dark mode transitions */
+.dark .transition-colors {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #374151;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ef4444;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #dc2626;
+}
+
+/* Info line hover effect */
+.info-line {
+  transition: transform 0.3s ease;
+}
+
+.info-line:hover {
+  transform: translateY(-2px);
+}
+
+/* Brand logos enhancements */
+.brand-logo {
+  transition: all 0.4s ease;
+  opacity: 0.9;
+  filter: brightness(1.1);
+  cursor: pointer;
+}
+
+.brand-logo:hover {
+  transform: scale(1.05);
+  opacity: 1;
+  filter: brightness(1.2);
+  filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.5));
+}
+
+.brand-logo path {
+  transition: fill 0.3s ease;
+}
+
+.brand-logo:hover path {
+  fill: #ef4444;
+}
+
+/* Address styling */
+address a {
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+address a:hover {
+  color: #ef4444;
+}
+
+/* Astra theme-like transitions */
+.transition-astra {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Map container enhancements */
+.map-container {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.map-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+              0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Navigation buttons hover effect */
+.nav-button {
+  position: relative;
+}
+
+.nav-button::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: #ef4444;
+  transition: all 0.3s ease;
+}
+
+.nav-button:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Footer powered by */
+.powered-by {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin-top: 0.5rem;
+}
+
+/* Add new styles for images */
+.images-grid img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.images-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* Header logo styles */
+nav img {
+  transition: opacity 0.3s ease;
+}
+
+nav img:hover {
+  opacity: 0.9;
+}
