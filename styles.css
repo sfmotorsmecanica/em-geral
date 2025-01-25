@@ -166,17 +166,50 @@ address a[href^="mailto:"]:hover {
   color: #ef4444;
 }
 
-/* Visitor counter styling */
+/* Removing visitor counter related styles */
 #visitor-count {
-  font-family: monospace;
-  font-size: 1.1em;
-  text-shadow: 0 0 5px rgba(239, 68, 68, 0.5);
 }
 
 .visitor-counter {
+}
+
+/* Hero section styles - updated */
+.hero-section {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-section::before {
+  content: none;
+}
+
+.hero-section > * {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: auto;
+  }
+}
+
+@media (min-width: 769px) {
+  .hero-section {
+    min-height: auto;
+  }
+}
+
+/* WhatsApp icon styles */
+.whatsapp-icon {
   transition: transform 0.3s ease;
 }
 
-.visitor-counter:hover {
-  transform: scale(1.05);
+.whatsapp-icon:hover {
+  transform: scale(1.1);
 }
