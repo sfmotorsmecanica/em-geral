@@ -33,6 +33,11 @@
                     class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
               Imagens
             </button>
+            <button @click="activeSection = 'parts'" 
+                    :class="{'text-red-600': activeSection === 'parts'}" 
+                    class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
+              Peças/Marca
+            </button>
             <button @click="activeSection = 'about'" 
                     :class="{'text-red-600': activeSection === 'about'}" 
                     class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
@@ -43,10 +48,15 @@
                     class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
               Nossos Serviços
             </button>
-            <button @click="activeSection = 'contact'" 
-                    :class="{'text-red-600': activeSection === 'contact'}" 
-                    class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
-              Envie sua Dúvida
+            <button @click="isDarkMode = !isDarkMode" 
+                    class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700"
+                    x-on:click="isDarkMode ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark')">
+              <svg x-show="!isDarkMode" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+              </svg>
+              <svg x-show="isDarkMode" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"/>
+              </svg>
             </button>
           </div>
 
@@ -74,6 +84,11 @@
                     class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
               Imagens
             </button>
+            <button @click="activeSection = 'parts'; isMenuOpen = false" 
+                    :class="{'text-red-600': activeSection === 'parts'}"
+                    class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
+              Peças/Marca
+            </button>
             <button @click="activeSection = 'about'; isMenuOpen = false" 
                     :class="{'text-red-600': activeSection === 'about'}"
                     class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
@@ -84,11 +99,6 @@
                     class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
               Nossos Serviços
             </button>
-            <button @click="activeSection = 'contact'; isMenuOpen = false" 
-                    :class="{'text-red-600': activeSection === 'contact'}"
-                    class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
-              Envie sua Dúvida
-            </button>
           </div>
         </div>
       </div>
@@ -96,11 +106,11 @@
 
     <!-- Main Content -->
     <main class="pt-16">
-      <!-- Hero Section -->
+      <!-- Hero! Section -->
       <section class="hero-section py-24 min-h-[600px] flex items-center flex-col">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div class="text-center space-y-8">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-8">
               Sua Oficina Mecânica de Confiança
             </h1>
           </div>
@@ -126,8 +136,12 @@
               </p>
             </div>
             <div class="space-y-4">
+              <button @click="activeSection = 'contact'" 
+                      class="glow-button bg-red-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-red-700 transition-all duration-300 block w-max mx-auto">
+                Entre em Contato
+              </button>
               <button @click="activeSection = 'services'" 
-                      class="bg-gray-600 text-white px-8 py-3 rounded-full text-lg font-scalable hover:bg-gray-700 transition-all duration-300 block w-max mx-auto">
+                      class="bg-gray-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-gray-700 transition-all duration-300 block w-max mx-auto">
                 Nossos Serviços
               </button>
             </div>
@@ -189,18 +203,73 @@
 
           <!-- Images Section -->
           <div x-show="activeSection === 'images'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Added store front image -->
+            <!-- Featured Filter Image -->
+            <div class="lg:col-span-3 overflow-hidden rounded-lg shadow-lg">
+              <img src="troca de filtro é importante .jpg" 
+                   alt="Importância da Troca de Filtro" 
+                   class="w-full h-96 object-cover transform hover:scale-105 transition-transform duration-300 cursor-pointer"
+                   onclick="window.open(this.src, '_blank')">
+              <div class="p-4 bg-white dark:bg-gray-700">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">A Importância da Troca de Filtro</h3>
+                <p class="text-gray-600 dark:text-gray-300">Mantenha seu veículo em perfeito funcionamento com manutenção preventiva regular</p>
+              </div>
+            </div>
+
+            <!-- Store front image -->
             <div class="overflow-hidden rounded-lg shadow-lg">
               <img src="WhatsApp Image 2025-01-17 at 08.38.48.jpeg" 
                    alt="SF Motors Store Front" 
-                   class="w-full h-64 object-cover transform hover:scale-105 transition-transform duration-300">
+                   class="w-full h-64 object-cover transform hover:scale-105 transition-transform duration-300 cursor-pointer"
+                   onclick="window.open(this.src, '_blank')">
             </div>
+
+            <!-- Logo image -->
             <div class="overflow-hidden rounded-lg shadow-lg">
               <img src="WhatsApp Image 2025-01-17 at 08.38.48 (1).jpeg" 
                    alt="SF Motors Logo" 
-                   class="w-full h-64 object-contain bg-white dark:bg-gray-700 transform hover:scale-105 transition-transform duration-300">
+                   class="w-full h-64 object-contain bg-white dark:bg-gray-700 transform hover:scale-105 transition-transform duration-300 cursor-pointer"
+                   onclick="window.open(this.src, '_blank')">
             </div>
-            <div class="bg-gray-200 dark:bg-gray-700 h-64 rounded-lg"></div>
+
+            <!-- New Mechanical Services Image -->
+            <div class="overflow-hidden rounded-lg shadow-lg">
+              <img src="serviços mecanicos .jpg" 
+                   alt="Serviços Mecânicos" 
+                   class="w-full h-64 object-cover transform hover:scale-105 transition-transform duration-300 cursor-pointer"
+                   onclick="window.open(this.src, '_blank')">
+            </div>
+
+            <!-- New Mechanical Services Image 2 -->
+            <div class="overflow-hidden rounded-lg shadow-lg">
+              <img src="serviços mecanicos 2.jpg" 
+                   alt="Serviços Mecânicos 2" 
+                   class="w-full h-64 object-cover transform hover:scale-105 transition-transform duration-300 cursor-pointer"
+                   onclick="window.open(this.src, '_blank')">
+            </div>
+
+            <!-- Front Shop Image -->
+            <div class="overflow-hidden rounded-lg shadow-lg">
+              <img src="frente oficina.jpg" 
+                   alt="Frente da Oficina" 
+                   class="w-full h-64 object-cover transform hover:scale-105 transition-transform duration-300 cursor-pointer"
+                   onclick="window.open(this.src, '_blank')">
+            </div>
+
+            <!-- Front Shop Image 2 -->
+            <div class="overflow-hidden rounded-lg shadow-lg">
+              <img src="frente oficina 2.jpg" 
+                   alt="Frente da Oficina 2" 
+                   class="w-full h-64 object-cover transform hover:scale-105 transition-transform duration-300 cursor-pointer"
+                   onclick="window.open(this.src, '_blank')">
+            </div>
+
+            <!-- Front Shop Image 3 -->
+            <div class="overflow-hidden rounded-lg shadow-lg">
+              <img src="frente ofina 3 .jpg" 
+                   alt="Frente da Oficina 3" 
+                   class="w-full h-64 object-cover transform hover:scale-105 transition-transform duration-300 cursor-pointer"
+                   onclick="window.open(this.src, '_blank')">
+            </div>
           </div>
 
           <!-- About Section -->
@@ -256,6 +325,73 @@
             </div>
           </div>
 
+          <!-- New Parts/Brand Section -->
+          <div x-show="activeSection === 'parts'" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-white">Peças Originais de Qualidade</h2>
+            
+            <div class="text-center mb-12">
+              <p class="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+                Na SF Motors, sua segurança é nossa prioridade. Por isso, trabalhamos exclusivamente com peças originais das melhores marcas do mercado. Cada componente é cuidadosamente selecionado para garantir durabilidade, desempenho e a máxima confiabilidade para seu veículo.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- Peças 2 - Auto Belts -->
+              <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <div class="aspect-w-16 aspect-h-9 overflow-hidden">
+                  <img src="peças 2.jpg" 
+                       alt="Correias Automotivas" 
+                       class="w-full h-48 object-cover transform hover:scale-105 transition-transform duration-300 cursor-pointer"
+                       onclick="window.open(this.src, '_blank')">
+                </div>
+                <div class="p-4">
+                  <h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white">Correias DAYCO e Continental</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">
+                    Correias de alta performance para garantir o funcionamento perfeito do seu motor.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Peças A - Nakata -->
+              <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <div class="aspect-w-16 aspect-h-9 overflow-hidden">
+                  <img src="peças a .jpg" 
+                       alt="Terminais de Direção Nakata" 
+                       class="w-full h-48 object-cover transform hover:scale-105 transition-transform duration-300 cursor-pointer"
+                       onclick="window.open(this.src, '_blank')">
+                </div>
+                <div class="p-4">
+                  <h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white">Terminais de Direção Nakata</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">
+                    Peças originais Nakata para maior precisão e segurança na direção.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Peças 3 - Cobreq -->
+              <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <div class="aspect-w-16 aspect-h-9 overflow-hidden">
+                  <img src="peças 3 .jpg" 
+                       alt="Pastilhas de Freio Cobreq" 
+                       class="w-full h-48 object-cover transform hover:scale-105 transition-transform duration-300 cursor-pointer"
+                       onclick="window.open(this.src, '_blank')">
+                </div>
+                <div class="p-4">
+                  <h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white">Pastilhas de Freio COBREQ</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">
+                    Pastilhas originais COBREQ para frenagem segura e eficiente.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-12 bg-red-50 dark:bg-red-900/20 p-6 rounded-lg">
+              <p class="text-center text-lg font-semibold text-red-600 dark:text-red-400">
+                "Trabalhamos apenas com as melhores marcas do mercado, garantindo a originalidade e qualidade das peças para sua total segurança e satisfação."
+              </p>
+            </div>
+          </div>
+
           <!-- Services Section -->
           <div x-show="activeSection === 'services'" id="services">
             <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">Nossos Serviços</h2>
@@ -265,9 +401,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                 </svg>
                 <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Troca de Óleo Profissional</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                  Mantenha seu motor sempre protegido com nossa troca de óleo premium. Utilizamos apenas lubrificantes de alta qualidade e filtros originais, garantindo maior vida útil e desempenho superior para seu veículo. Inclui check-up completo de 15 pontos essenciais!
-                </p>
+                <p class="text-gray-600 dark:text-gray-300">Mantenha seu motor sempre protegido com nossa troca de óleo premium. Utilizamos apenas lubrificantes de alta qualidade e filtros originais, garantindo maior vida útil e desempenho superior para seu veículo. Inclui check-up completo de 15 pontos essenciais!</p>
               </div>
 
               <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -275,125 +409,43 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                 </svg>
                 <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Elétrica Automotiva</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                  Diagnóstico preciso e soluções eficientes para todo sistema elétrico. Nossa equipe especializada utiliza equipamentos de última geração para identificar e resolver problemas elétricos, desde bateria até sistemas de ignição complexos.
-                </p>
+                <p class="text-gray-600 dark:text-gray-300">Diagnóstico preciso e soluções eficientes para todo sistema elétrico. Nossa equipe especializada utiliza equipamentos de última geração para identificar e resolver problemas elétricos, desde bateria até sistemas de ignição complexos.</p>
               </div>
 
               <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <svg class="w-12 h-12 text-red-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c-.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                 </svg>
                 <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Mecânica em Geral</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                  Manutenção completa para todas as marcas e modelos. Nossa experiência abrange desde pequenos reparos até grandes revisões, sempre com peças de qualidade e garantia nos serviços. Seu carro merece o melhor tratamento!
-                </p>
+                <p class="text-gray-600 dark:text-gray-300">Manutenção completa para todas as marcas e modelos. Nossa experiência abrange desde pequenos reparos até grandes revisões, sempre com peças de qualidade e garantia nos serviços. Seu carro merece o melhor tratamento!</p>
+              </div>
+
+              <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <svg class="w-12 h-12 text-red-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9l6 6H3l6-6z"></path>
+                </svg>
+                <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Injeção Eletrônica</h3>
+                <p class="text-gray-600 dark:text-gray-300">Diagnóstico computadorizado e correção precisa de falhas na injeção eletrônica. Utilizamos tecnologia de ponta para otimizar o desempenho do seu veículo, melhorando consumo e performance. Economia e potência em perfeito equilíbrio!</p>
               </div>
 
               <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <svg class="w-12 h-12 text-red-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                 </svg>
-                <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Injeção Eletrônica</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                  Diagnóstico computadorizado e correção precisa de falhas na injeção eletrônica. Utilizamos tecnologia de ponta para otimizar o desempenho do seu veículo, melhorando consumo e performance. Economia e potência em perfeito equilíbrio!
-                </p>
+                <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Suspensão</h3>
+                <p class="text-gray-600 dark:text-gray-300">Especialistas em garantir seu conforto e segurança. Realizamos manutenção completa do sistema de suspensão. Adeus aos barulhos indesejados e vibrações! Dirija com mais conforto e estabilidade.</p>
               </div>
 
               <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <svg class="w-12 h-12 text-red-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.003 0L3.732 9H3v2a2 2 0 002 2v(2.5M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                 </svg>
                 <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Sistema de Freios</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                  Sua segurança é nossa prioridade! Manutenção completa do sistema de frenagem, desde pastilhas até discos e fluidos. Utilizamos componentes de primeira linha para garantir frenagens seguras e eficientes em qualquer situação.
-                </p>
+                <p class="text-gray-600 dark:text-gray-300">Sua segurança é nossa prioridade! Manutenção completa do sistema de frenagem, desde pastilhas até discos e fluidos. Utilizamos componentes de primeira linha para garantir frenagens seguras e eficientes em qualquer situação.</p>
               </div>
             </div>
           </div>
-
-          <!-- Contact Form Section -->
-          <div x-show="activeSection === 'contact'" class="py-12 bg-white dark:bg-gray-900">
-            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 class="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-white">Envie sua Dúvida</h2>
-              
-              <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6">
-                <div class="mb-6">
-                  <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-md shadow-md">
-                    <p class="font-bold text-center">⏰ Nossa equipe responderá em até 48 horas úteis ⏰</p>
-                  </div>
-                </div>
-                
-                <form id="contactForm" method="POST" action="mailto:sfmotors.mecanica@gmail.com" class="space-y-6">
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="fullName">
-                        Nome Completo *
-                      </label>
-                      <input type="text" id="fullName" name="fullName" required
-                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
-                    </div>
-                    
-                    <div>
-                      <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="phone">
-                        Telefone *
-                      </label>
-                      <input type="tel" id="phone" name="phone" required
-                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
-                    </div>
-                    
-                    <div>
-                      <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="email">
-                        Email *
-                      </label>
-                      <input type="email" id="email" name="email" required
-                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
-                    </div>
-                    
-                    <div>
-                      <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="city">
-                        Cidade *
-                      </label>
-                      <input type="text" id="city" name="city" required
-                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
-                    </div>
-                    
-                    <div>
-                      <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="vehicleBrand">
-                        Marca do Veículo *
-                      </label>
-                      <input type="text" id="vehicleBrand" name="vehicleBrand" required
-                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
-                    </div>
-                    
-                    <div>
-                      <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="vehicleModel">
-                        Modelo do Veículo *
-                      </label>
-                      <input type="text" id="vehicleModel" name="vehicleModel" required
-                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="question">
-                      Sua Dúvida *
-                    </label>
-                    <textarea id="question" name="question" rows="4" required
-                              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"></textarea>
-                  </div>
-                  
-                  <div class="flex justify-end">
-                    <button type="submit" 
-                            class="bg-red-600 text-white px-6 py-2 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
-                      Enviar Dúvida
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-
         </div>
       </section>
     </main>
@@ -415,11 +467,11 @@
             <div>
               <h3 class="text-xl font-bold mb-4">Nossa Localização</h3>
               <div class="map-container">
-                <a href="https://www.google.com/maps/place/R.+Marcilio+Dias,+848+-+Centro,+São+Francisco+do+Sul+-+SC,+89240-000" 
+                <a href="https://www.google.com/maps/place/R.+Marcílio+Dias,+848+-+Centro,+São+Francisco+do+Sul+-+SC,+89240-000" 
                    target="_blank"
                    class="block w-full h-48 bg-gray-700 rounded-lg overflow-hidden hover:opacity-90 transition-opacity">
                   <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3578.5476789234567!2d-48.6382345!3d-26.2434567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94deafb7b2b2b2b1%3A0x1b1b1b1b1b1b1b1b!2sRua+Marcílio+Dias,+848+-+Centro,+São+Francisco+do+Sul,+SC!5e0!3m2!1spt-BR!2sbr!4v1625176234567!5m2!1spt-BR!2sbr"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3578.5476789234567!2d-48.6382345!3d-26.2434567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94deafb7b2b2b2b1%3A0x1b1b1b1b1b1b1b1b!2sRua+Marcílio+Dias%2C+848+-+Centro%2C+São+Francisco+do+Sul+-+SC!5e0!3m2!1spt-BR!2sbr!4v1625176234567!5m2!1spt-BR!2sbr"
                     width="100%"
                     height="100%"
                     style="border:0;"
@@ -457,50 +509,11 @@
           </div>
         </div>
         <div class="text-center mt-8 border-t border-gray-700 pt-8">
-          <p>&copy; 2024 SF MOTORS - MECÂNICA. Todos os direitos reservados.</p>
+          <p>&copy; 2024 SF MOTORS - MECÂNICA. Todos os dire!itos reservados.</p>
           <p class="text-sm text-gray-400 mt-2">Powered by WordPress | Theme: Astra by Brainstorm Force</p>
         </div>
       </div>
     </footer>
   </div>
-
-  <script>
-    document.getElementById('contactForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const formData = new FormData(e.target);
-      const data = Object.fromEntries(formData.entries());
-      
-      // Format message body
-      const message = `
-Nova Dúvida de Cliente - SF Motors
-
-Nome: ${data.fullName}
-Telefone: ${data.phone}
-Email: ${data.email}
-Cidade: ${data.city}
-Marca do Veículo: ${data.vehicleBrand}
-Modelo: ${data.vehicleModel}
-Dúvida: ${data.question}
-      `.trim();
-
-      try {
-        // Create email URL with subject and body
-        const emailSubject = encodeURIComponent("Nova dúvida de cliente - SF Motors");
-        const emailBody = encodeURIComponent(message);
-        
-        // Open default email client with pre-filled message
-        window.location.href = `mailto:sfmotors.mecanica@gmail.com?subject=${emailSubject}&body=${emailBody}`;
-        
-        // Show success message and reset form
-        alert('Por favor, envie o email através do seu cliente de email que será aberto automaticamente.');
-        e.target.reset();
-
-      } catch (error) {
-        console.error('Error:', error);
-        alert('Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente.');
-      }
-    });
-  </script>
 </body>
 </html>
