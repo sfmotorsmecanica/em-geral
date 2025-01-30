@@ -23,6 +23,11 @@
           
           <!-- Desktop Navigation -->
           <div class="hidden md:flex items-center space-x-4">
+            <button @click="activeSection = 'contact'" 
+                    :class="{'text-red-600': activeSection === 'contact'}" 
+                    class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
+              Envie sua Dúvida
+            </button>
             <button @click="activeSection = 'videos'" 
                     :class="{'text-red-600': activeSection === 'videos'}" 
                     class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
@@ -47,11 +52,6 @@
                     :class="{'text-red-600': activeSection === 'services'}" 
                     class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
               Nossos Serviços
-            </button>
-            <button @click="activeSection = 'contact'" 
-                    :class="{'text-red-600': activeSection === 'contact'}" 
-                    class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
-              Envie sua Dúvida
             </button>
             <button @click="isDarkMode = !isDarkMode" 
                     class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700"
@@ -79,6 +79,11 @@
         <!-- Mobile Navigation Menu -->
         <div :class="{'block': isMenuOpen, 'hidden': !isMenuOpen}" class="md:hidden">
           <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <button @click="activeSection = 'contact'; isMenuOpen = false" 
+                    :class="{'text-red-600': activeSection === 'contact'}"
+                    class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
+              Envie sua Dúvida
+            </button>
             <button @click="activeSection = 'videos'; isMenuOpen = false" 
                     :class="{'text-red-600': activeSection === 'videos'}"
                     class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
@@ -103,11 +108,6 @@
                     :class="{'text-red-600': activeSection === 'services'}"
                     class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
               Nossos Serviços
-            </button>
-            <button @click="activeSection = 'contact'; isMenuOpen = false" 
-                    :class="{'text-red-600': activeSection === 'contact'}"
-                    class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
-              Envie sua Dúvida
             </button>
           </div>
         </div>
@@ -589,31 +589,47 @@
       const formData = new FormData(event.target);
       const data = Object.fromEntries(formData.entries());
       
-      // Prepare email content
-      const emailBody = `
+      // Validate required fields
+      const requiredFields = ['nome', 'marca', 'telefone', 'email', 'cidade'];
+      for (const field of requiredFields) {
+        if (!data[field]) {
+          alert(`Por favor, preencha o campo ${field.charAt(0).toUpperCase() + field.slice(1)}`);
+          return false;
+        }
+      }
+      
+      // Format the message for both email and WhatsApp
+      const messageBody = `
         Nome: ${data.nome}
         Marca do Veículo: ${data.marca}
         Telefone: ${data.telefone}
         Email: ${data.email}
         Cidade: ${data.cidade}
-        Dúvida: ${data.duvida}
-      `;
+        ${data.duvida ? `Dúvida: ${data.duvida}` : ''}`;
+
+      // For mobile devices, prioritize WhatsApp
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        window.location.href = `https://wa.me/5547999253539?text=${encodeURIComponent(messageBody)}`;
+      } else {
+        // For desktop, open both email and WhatsApp
+        window.open(`mailto:sfmotors.mecanica@gmail.com?subject=Nova Dúvida de Cliente&body=${encodeURIComponent(messageBody)}`, '_blank');
+        window.open(`https://wa.me/5547999253539?text=${encodeURIComponent(messageBody)}`, '_blank');
+      }
       
-      // Send email
-      window.location.href = `mailto:sfmotors.mecanica@gmail.com?subject=Nova Dúvida de Cliente&body=${encodeURIComponent(emailBody)}`;
-      
-      // Send to WhatsApp
-      const whatsappText = `*Nova Dúvida de Cliente*\n\n${emailBody}`;
-      window.open(`https://wa.me/5547999253539?text=${encodeURIComponent(whatsappText)}`, '_blank');
-      
-      // Clear form
+      // Clear form and show success message
       event.target.reset();
-      
-      // Show success message
       alert('Sua dúvida foi enviada com sucesso! Em breve entraremos em contato.');
       
       return false;
     }
+
+    // Add touch event listeners for mobile devices
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('contactForm');
+      if (form) {
+        form.addEventListener('touchstart', function() {}, false);
+      }
+    });
   </script>
 </body>
 </html>
