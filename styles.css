@@ -255,3 +255,30 @@ address a[href^="mailto:"]:hover {
 .contact-form button:hover {
   transform: translateY(-1px);
 }
+
+/* Update these styles for partner logos */
+.partner-logo-container {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  max-width: 120px;
+  margin: 0;
+}
+
+.partner-logo-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.partner-logo {
+  transition: all 0.3s ease;
+  filter: brightness(1);
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.partner-logo:hover {
+  filter: brightness(1.1);
+}
