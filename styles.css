@@ -256,6 +256,16 @@ address a[href^="mailto:"]:hover {
   transform: translateY(-1px);
 }
 
+/* Add new styles for clickable service box */
+#services a {
+  text-decoration: none;
+  display: block;
+}
+
+#services a:hover {
+  text-decoration: none;
+}
+
 /* Update these styles for partner logos */
 .partner-logo-container {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
