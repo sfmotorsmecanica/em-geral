@@ -214,6 +214,18 @@ address a[href^="mailto:"]:hover {
   transform: scale(1.1);
 }
 
+/* Instagram icon hover effects */
+svg[viewBox="0 0 24 24"] {
+  transition: all 0.3s ease;
+  width: 3rem;
+  height: 3rem;
+}
+
+svg[viewBox="0 0 24 24"]:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 8px rgba(214, 41, 118, 0.6));
+}
+
 /* Contact Form Styles */
 .contact-form input:focus,
 .contact-form textarea:focus {
