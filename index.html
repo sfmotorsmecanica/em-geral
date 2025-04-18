@@ -126,11 +126,18 @@
           </div>
         </div>
         <!-- Full-width banner image -->
-        <div class="w-full overflow-hidden">
-          <img src="faixa FS.jpg" 
-               alt="SF Motors Banner" 
-               class="w-full object-cover object-center"
-               style="max-height: 200px;">
+        <div class="w-full overflow-hidden relative" style="height: 200px; ">
+          <div class="slider-container absolute top-0 left-0 w-full h-full flex transition-transform duration-1000 ease-in-out" style="animation: slideAnimation 20s linear infinite;">
+            <img src="faixa FS.jpg" 
+                 alt="SF Motors Banner"
+                 class="w-full h-full object-cover object-center flex-shrink-0" style="max-height: 200px;">
+            <img src="peças 2.jpg" 
+                 alt="Auto Belts"
+                 class="w-full h-full object-cover object-center flex-shrink-0" style="max-height: 200px;">
+            <img src="serviços mecanicos .jpg" 
+                 alt="Car Engine Repair"
+                 class="w-full h-full object-cover object-center flex-shrink-0" style="max-height: 200px;">
+          </div>
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative mt-8">
           <div class="text-center space-y-8">
@@ -604,7 +611,7 @@
               <h3 class="text-xl font-bold mb-4">Endereço Completo</h3>
               <address class="not-italic">
                 <p class="mb-2">SF MOTORS - MECÂNICA</p>
-                <p class="mb-2">Rua Marcílio Dias, 848</p>
+                <p class="mb-2">Rua Marcilio Dias, 848</p>
                 <p class="mb-2">Centro</p>
                 <p class="mb-2">São Francisco do Sul - SC</p>
                 <p class="mb-2">CEP: 89240-000</p>
@@ -619,8 +626,8 @@
                   </a>
                 </p>
                 <p class="mb-2">
-                  <a href="/cdn-cgi/l/email-protection#85f6e3e8eaf1eaf7f6abe8e0e6e4ebece6e4c5e2e8e4ece9abe6eae8" class="hover:text-red-500">
-                    Email: <span class="__cf_email__" data-cfemail="592a3f34362d362b2a77343c3a3837303a38193e34383035773a3634">[email&#160;protected]</span>
+                  <a href="/cdn-cgi/l/email-protection#9deefbf0f2e9f2efeeb3f0f8fefcf3f4fefcddfaf0fcf4f1b3fef2f0" class="hover:text-red-500">
+                    Email: <span class="__cf_email__" data-cfemail="087b6e65677c677a7b26656d6b6966616b69486f65696164266b6765">[email&#160;protected]</span>
                   </a>
                 </p>
               </address>
@@ -681,6 +688,36 @@
       if (form) {
         form.addEventListener('touchstart', function() {}, false);
       }
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const sliderContainer = document.querySelector('.slider-container');
+      const images = document.querySelectorAll('.slider-container img');
+      let counter = 1;
+      const slideWidth = images[0].clientWidth;
+
+      function slide() {
+        sliderContainer.style.transform = `translateX(-${counter * slideWidth}px)`;
+      }
+
+      function nextSlide() {
+        sliderContainer.style.transition = 'none'; 
+        counter++;
+        if (counter === images.length) {
+          counter = 1;
+          sliderContainer.style.transform = `translateX(0px)`; 
+          void sliderContainer.offsetWidth; 
+          sliderContainer.style.transition = 'transform 6s ease-in-out'; 
+        }
+        slide();
+        setTimeout(pause, 4000);
+      }
+
+      function pause() {
+        setTimeout(nextSlide, 2000);
+      }
+      pause();
     });
   </script>
 </body>
