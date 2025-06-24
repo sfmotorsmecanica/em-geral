@@ -116,7 +116,7 @@
 
     <!-- Main Content -->
     <main class="pt-16">
-      <!-- Hero Section -->
+      <!-- Hero! Section -->
       <section class="hero-section py-24 min-h-[600px] flex items-center flex-col">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div class="text-center space-y-8">
@@ -126,11 +126,18 @@
           </div>
         </div>
         <!-- Full-width banner image -->
-        <div class="w-full overflow-hidden">
+        <div class="w-full overflow-hidden relative" style="height: 200px;">
+          <div class="slider-container absolute top-0 left-0 w-full h-full flex transition-transform duration-1000 ease-in-out">
           <img src="faixa FS.jpg" 
                alt="SF Motors Banner" 
-               class="w-full object-cover object-center"
-               style="max-height: 200px;">
+               class="w-full h-full object-cover object-center flex-shrink-0" style="max-height: 200px;">
+          <img src="dirty_vs_clean_air_filter.jpg"
+               alt="Segurança e Tranquilidade"
+               class="w-full h-full object-cover object-center flex-shrink-0" style="max-height: 200px;">
+          <img src="sf_motors_banner.jpg"
+               alt="SF MOTORS cuida de você e da sua familia"
+               class="w-full h-full object-cover object-center flex-shrink-0" style="max-height: 200px;">
+          </div>
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative mt-8">
           <div class="text-center space-y-8">
@@ -667,6 +674,33 @@
     </footer>
   </div>
   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const sliderContainer = document.querySelector('.slider-container');
+      const images = document.querySelectorAll('.slider-container img');
+      let counter = 0;
+      const slideWidth = images[0].clientWidth;
+
+      function slide() {
+        sliderContainer.style.transition = 'transform 1s ease-in-out';
+        sliderContainer.style.transform = `translateX(${-slideWidth * counter}px)`;
+      }
+
+      function nextSlide() {
+        counter++;
+        if (counter === images.length) {
+          counter = 0;
+        }
+        slide();
+        setTimeout(pause, 3000); // Pause after sliding
+      }
+
+      function pause() {
+        setTimeout(nextSlide, 1000); // Resume after pause
+      }
+      pause(); // Start the animation
+    });
+  </script>
+  <script>
     function handleSubmit(event) {
       event.preventDefault();
       
@@ -712,6 +746,47 @@
       const form = document.getElementById('contactForm');
       if (form) {
         form.addEventListener('touchstart', function() {}, false);
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = [
+        "01.jpg", "02.jpg", "03 .jpg", "04.jpg", "05.jpg", "06.jpg", "07.jpg"
+      ];
+      const STORAGE_KEY_INDEX = 'featuredImageIndex';
+      const STORAGE_KEY_TIMESTAMP = 'featuredImageTimestamp';
+
+      let currentImageIndex = localStorage.getItem(STORAGE_KEY_INDEX);
+      let lastUpdatedTimestamp = localStorage.getItem(STORAGE_KEY_TIMESTAMP);
+
+      // Convert to number if it's a string from localStorage
+      currentImageIndex = currentImageIndex ? parseInt(currentImageIndex, 10) : 0;
+      lastUpdatedTimestamp = lastUpdatedTimestamp ? parseInt(lastUpdatedTimestamp, 10) : 0;
+
+      const ONE_DAY_MS = 24 * 60 * 60 * 1000;
+      const now = Date.now();
+
+      if (now - lastUpdatedTimestamp >= ONE_DAY_MS) {
+        // More than 24 hours passed, update image
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        localStorage.setItem(STORAGE_KEY_INDEX, currentImageIndex);
+        localStorage.setItem(STORAGE_KEY_TIMESTAMP, now);
+      }
+
+      const imageUrl = images[currentImageIndex];
+
+      const imageHtml = `
+        <img id="featured-sidebar-image"
+             src="${imageUrl}"
+             alt="Imagem em Destaque"
+             class="w-full h-auto max-w-[228px] rounded-lg shadow-lg mx-auto mb-4 object-cover"
+             style="width: 228px; height: 228px;">
+      `;
+
+      // Insert the image into the DOM
+      const infoLine = document.querySelector('.info-line');
+      if (infoLine) {
+        infoLine.insertAdjacentHTML('beforebegin', imageHtml);
       }
     });
   </script>

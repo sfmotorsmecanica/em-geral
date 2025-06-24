@@ -2,18 +2,8 @@
   filter: brightness(1.1);
 }
 
-.highlight-image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 2rem;
+#featured-sidebar-image {
+  width: 228px;
+  height: 228px;
+  object-fit: cover;
 }
-
-.highlight-image-container img {
-  width: 100%;
-  max-width: 250px; /* Adjust max-width as needed */
-  height: auto;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
