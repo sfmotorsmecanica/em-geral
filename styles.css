@@ -7,3 +7,13 @@
   height: 228px;
   object-fit: cover;
 }
+
+.slider-container {
+  display: flex;
+  transition: transform 1s ease-in-out;
+}
+
+.slider-container img {
+  min-width: 100%;
+  object-fit: cover;
+}

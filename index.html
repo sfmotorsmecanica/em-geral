@@ -128,15 +128,15 @@
         <!-- Full-width banner image -->
         <div class="w-full overflow-hidden relative" style="height: 200px;">
           <div class="slider-container absolute top-0 left-0 w-full h-full flex transition-transform duration-1000 ease-in-out">
-          <img src="faixa FS.jpg" 
-               alt="SF Motors Banner" 
-               class="w-full h-full object-cover object-center flex-shrink-0" style="max-height: 200px;">
-          <img src="dirty_vs_clean_air_filter.jpg"
-               alt="Segurança e Tranquilidade"
-               class="w-full h-full object-cover object-center flex-shrink-0" style="max-height: 200px;">
-          <img src="sf_motors_banner.jpg"
-               alt="SF MOTORS cuida de você e da sua familia"
-               class="w-full h-full object-cover object-center flex-shrink-0" style="max-height: 200px;">
+            <img src="faixa FS.jpg" 
+                 alt="SF Motors Banner" 
+                 class="w-full h-full object-cover object-center flex-shrink-0" style="max-height: 200px;">
+            <img src="faixa FS.jpg"
+                 alt="SF Motors Banner"
+                 class="w-full h-full object-cover object-center flex-shrink-0" style="max-height: 200px;">
+            <img src="faixa FS.jpg"
+                 alt="SF Motors Banner"
+                 class="w-full h-full object-cover object-center flex-shrink-0" style="max-height: 200px;">
           </div>
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative mt-8">
@@ -501,7 +501,7 @@
 
               <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <svg class="w-12 h-12 text-red-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9a3 3 0 11-6 0 3 3 0 016 0z"/>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
                 </svg>
                 <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Injeção Eletrônica</h3>
@@ -689,13 +689,18 @@
         counter++;
         if (counter === images.length) {
           counter = 0;
+          // Reset position instantly when reaching the end
+          sliderContainer.style.transition = 'none';
+          sliderContainer.style.transform = `translateX(0)`;
+          // Force reflow
+          sliderContainer.offsetHeight;
         }
         slide();
-        setTimeout(pause, 3000); // Pause after sliding
+        setTimeout(pause, 2000); // 2 second pause for reading
       }
 
       function pause() {
-        setTimeout(nextSlide, 1000); // Resume after pause
+        setTimeout(nextSlide, 1000); // 1 second transition
       }
       pause(); // Start the animation
     });
