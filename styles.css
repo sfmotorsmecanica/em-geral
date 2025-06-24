@@ -1,22 +1,19 @@
-<file-changes>
-```diff
---- a/styles.css
-+++ b/styles.css
-@@ -252,3 +252,16 @@
- .slider-container img {
-   min-width: 100%; /* Ensure images take up full width */
- }
-+
-+@keyframes slideAnimation {
-+  0% { transform: translateX(0%); }
-+  20% { transform: translateX(0%); } /* Hold for 2 seconds (20% of 10s) */
-+
-+  25% { transform: translateX(-100%); }
-+  45% { transform: translateX(-100%); }
-+
-+  50% { transform: translateX(-200%); }
-+  70% { transform: translateX(-200%); }
-+ 80% { transform: translateX(-300%); }
-+  100% { transform: translateX(-400%); }
-+}
+.partner-logo:hover {
+  filter: brightness(1.1);
+}
+
+.highlight-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.highlight-image-container img {
+  width: 100%;
+  max-width: 250px; /* Adjust max-width as needed */
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
