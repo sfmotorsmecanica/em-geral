@@ -17,15 +17,3 @@
   min-width: 100%;
   object-fit: cover;
 }
-
-/* Adjust image gallery display */
-#image-gallery img {
-  height: 18rem; /* 72 in Tailwind units */
-  object-fit: cover;
-  width: 100%;
-}
-
-#image-gallery .overflow-hidden {
-  max-width: 100%;
-  margin-bottom: 1.5rem;
-}
