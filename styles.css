@@ -16,4 +16,17 @@
 .slider-container img {
   min-width: 100%;
   object-fit: cover;
+  height: 228px; /* enforce 6cm ~ 228px height for banner */
+}
+
+/* Adjust image gallery display */
+#image-gallery img {
+  height: 18rem; /* 72 in Tailwind units */
+  object-fit: cover;
+  width: 100%;
+}
+
+#image-gallery .overflow-hidden {
+  max-width: 100%;
+  margin-bottom: 1.5rem;
 }
