@@ -723,65 +723,29 @@
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const slider = document.querySelector('.slider-container');
-      const slides = Array.from(document.querySelectorAll('.slider-container img'));
-      if (!slider || slides.length === 0) return;
+      const sliderContainer = document.querySelector('.slider-container');
+      const images = document.querySelectorAll('.slider-container img');
+      let counter = 0;
+      const slideWidth = images[0].clientWidth;
 
-      let idx = 0;
-      let width = slider.clientWidth;
-      let autoTimer = null;
-      let pauseMs = 2000; // 2s pause while centered
-      let transitionMs = 1200; // smooth transition
-
-      function updateWidth() {
-        width = slider.clientWidth;
-        slides.forEach(s => s.style.minWidth = width + 'px');
-        goTo(idx, false);
+      function slide() {
+        sliderContainer.style.transition = 'transform 1s ease-in-out';
+        sliderContainer.style.transform = `translateX(${-slideWidth * counter}px)`;
       }
 
-      function goTo(i, animate = true) {
-        slider.style.transition = animate ? `transform ${transitionMs}ms ease-in-out` : 'none';
-        slider.style.transform = `translateX(${-width * i}px)`;
-      }
-
-      function scheduleNext(delay) {
-        clearTimeout(autoTimer);
-        autoTimer = setTimeout(() => {
-          idx = (idx + 1) % slides.length;
-          goTo(idx, true);
-          // wait for transition then pause visible time
-          clearTimeout(autoTimer);
-          autoTimer = setTimeout(() => scheduleNext(pauseMs), transitionMs);
-        }, delay);
-      }
-
-      // touch support for mobile: allow user drag to change slide, but keep autoplay
-      let startX = 0, deltaX = 0, dragging = false;
-      slider.addEventListener('touchstart', (e) => {
-        clearTimeout(autoTimer);
-        dragging = true;
-        startX = e.touches[0].clientX;
-        slider.style.transition = 'none';
-      }, {passive: true});
-      slider.addEventListener('touchmove', (e) => {
-        if (!dragging) return;
-        deltaX = e.touches[0].clientX - startX;
-        slider.style.transform = `translateX(${ -width * idx + deltaX }px)`;
-      }, {passive: true});
-      slider.addEventListener('touchend', () => {
-        dragging = false;
-        if (Math.abs(deltaX) > width * 0.2) {
-          idx = deltaX > 0 ? Math.max(0, idx - 1) : Math.min(slides.length - 1, idx + 1);
+      function nextSlide() {
+        counter++;
+        if (counter === images.length) {
+          counter = 0;
         }
-        deltaX = 0;
-        goTo(idx, true);
-        scheduleNext(pauseMs + transitionMs);
-      });
+        slide();
+        setTimeout(pause, 3000); // Pause after sliding
+      }
 
-      window.addEventListener('resize', updateWidth);
-      updateWidth();
-      // start autoplay: small initial delay so first slide is readable
-      scheduleNext(pauseMs + transitionMs);
+      function pause() {
+        setTimeout(nextSlide, 1000); // Resume after pause
+      }
+      pause(); // Start the animation
     });
   </script>
   <script>
