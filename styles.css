@@ -12,7 +12,12 @@
   display: flex;
   transition: transform 1s ease-in-out;
   will-change: transform;
-  height: 6cm; /* fixed height to match desktop across devices */
+  /* Responsive banner height:
+     - Use viewport units so banner scales on mobile and desktop
+     - Clamp to a reasonable max-height for large screens and min-height for small screens */
+  height: min(22vh, 220px);
+  max-height: 260px;
+  min-height: 120px;
 }
 
 .slider-container img {
@@ -27,14 +32,17 @@
 /* Mobile adjustments: use viewport height to fit mobile screens and ensure touch area */
 @media (max-width: 640px) {
   .slider-container {
-    height: 6cm; /* ensure mobile displays same 6cm banner height as desktop */
+    /* slightly taller on very narrow screens for readability */
+    height: min(30vh, 240px);
+    min-height: 120px;
   }
 }
 
 /* Ensure banner remains legible and not taller than one screen on small devices */
 @media (max-height: 600px) and (max-width: 768px) {
   .slider-container {
-    height: 6cm;
+    /* keep a conservative height when vertical space is limited */
+    height: min(20vh, 180px);
   }
 }
 
