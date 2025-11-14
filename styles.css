@@ -169,3 +169,37 @@ input, textarea, select {
 
 /* Utility muted color */
 .muted { color: var(--muted) !important; }
+
+/* New: flat color buttons for specific top actions without black shadow */
+.btn-contact {
+  background: #e11d1d !important; /* solid red */
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: none !important;
+  transition: background .12s ease, transform .12s ease;
+}
+.btn-contact:hover {
+  background: #c41414 !important;
+  transform: translateY(-1px);
+}
+
+/* flat green testimonials button */
+.btn-testimonials {
+  background: #059669 !important; /* solid green (emerald-600) */
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-decoration: none;
+  transition: background .12s ease, transform .12s ease;
+}
+.btn-testimonials:hover {
+  background: #047857 !important;
+  transform: translateY(-1px);
+}
+
+/* ensure global button shadow overrides do not apply to these */
+.btn-contact, .btn-testimonials {
+  filter: none !important;
+  -webkit-filter: none !important;
+  box-shadow: none !important;
+}
