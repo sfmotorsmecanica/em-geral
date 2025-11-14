@@ -1,50 +1,171 @@
-.partner-logo:hover {
-  filter: brightness(1.1);
+/* Global background and typography */
+:root{
+  --bg-main: #111111;      /* page background */
+  --panel-dark: #1F1F1F;   /* inner panel */
+  --panel-darker: #2A2A2A; /* slightly lighter dark for contrast */
+  --text-main: #FFFFFF;    /* primary text */
+  --text-sub: #D9D9D9;     /* subtitle / secondary text */
+  --accent: #F2C335;       /* metallic yellow accent */
+  --muted: #9A9A9A;
+  --glass: rgba(255,255,255,0.03);
 }
 
+html, body {
+  height: 100%;
+  background: var(--bg-main) !important;
+  color: var(--text-main);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Override Tailwind/bg classes that were used inline */
+.bg-white, .bg-white.dark\:bg-gray-800, .bg-red-50, .bg-gray-700 {
+  background: transparent !important;
+}
+
+/* Panels, cards and sections */
+.section-panel,
+.bg-white, .dark\:bg-gray-800, .info-line, .rounded-lg, .slider-container, .hero-section > .max-w-7xl, .map-container a {
+  background: linear-gradient(180deg, var(--panel-dark), var(--panel-darker)) !important;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  color: var(--text-main);
+}
+
+/* Specific components */
+nav {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  backdrop-filter: blur(6px);
+}
+
+/* Logo text */
+nav .text-2xl {
+  color: var(--accent) !important;
+}
+
+/* Headings and text */
+h1, h2, h3, h4 {
+  color: var(--text-main) !important;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+p, li, address, .text-gray-700, .text-gray-600, .text-gray-300 {
+  color: var(--text-sub) !important;
+  line-height: 1.6;
+}
+
+/* Subtitles lighter gray */
+.text-gray-900, .text-gray-700, .text-gray-600 {
+  color: var(--text-sub) !important;
+}
+
+/* Buttons and accent elements */
+button, .glow-button, .inline-flex, .bg-red-600, .bg-green-500 {
+  background: linear-gradient(180deg, rgba(242,195,53,0.14), rgba(242,195,53,0.06));
+  color: var(--bg-main) !important;
+  border: 1px solid rgba(242,195,53,0.18);
+  box-shadow: 0 6px 18px rgba(242,195,53,0.06);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+button:hover, .glow-button:hover, .inline-flex:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(242,195,53,0.12);
+}
+
+/* Accent colored icons */
+svg path, svg {
+  stroke: var(--accent) !important;
+  color: var(--accent) !important;
+  fill: var(--accent) !important;
+}
+
+/* Links */
+a, a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* Cards and gallery items */
+.bg-white.dark\:bg-gray-800.rounded-lg, .overflow-hidden.rounded-lg.shadow-lg, .bg-white.dark\:bg-gray-700 {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)) !important;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Image gallery overlay text */
+#image-gallery .p-4 {
+  background: transparent !important;
+}
+
+/* Footer tweaks */
+footer {
+  background: linear-gradient(180deg, var(--panel-darker), rgba(0,0,0,0.6)) !important;
+  color: var(--text-sub);
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Brand logos */
+.brand-logo {
+  filter: grayscale(30%) brightness(0.95);
+  opacity: 0.95;
+}
+
+/* Partner logos */
+.partner-logo {
+  filter: none;
+  border-radius: 8px;
+}
+
+/* Featured sidebar image frame */
 #featured-sidebar-image {
   width: 228px;
   height: 228px;
   object-fit: cover;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.65);
+  border-radius: 8px;
 }
 
+/* Slider styles - ensure 6cm ~ 228px height */
 .slider-container {
   display: flex;
   transition: transform 1s ease-in-out;
-  will-change: transform;
-  height: 6cm; /* fixed height to match desktop across devices */
+  height: 400px;
+  align-items: stretch;
 }
 
 .slider-container img {
+  min-width: 100%;
   object-fit: cover;
-  height: 100%;
-  flex-shrink: 0;
-  -webkit-user-drag: none;
-  user-select: none;
+  height: 400px;
 }
 
-/* Mobile adjustments: use viewport height to fit mobile screens and ensure touch area */
-@media (max-width: 640px) {
-  .slider-container {
-    height: 6cm; /* ensure mobile displays same 6cm banner height as desktop */
-  }
+/* Ensure hero title stands out */
+.hero-section h1 {
+  text-shadow: 0 6px 18px rgba(0,0,0,0.6);
 }
 
-/* Ensure banner remains legible and not taller than one screen on small devices */
-@media (max-height: 600px) and (max-width: 768px) {
-  .slider-container {
-    height: 6cm;
-  }
+/* Forms */
+input, textarea, select {
+  background: rgba(255,255,255,0.02) !important;
+  border: 1px solid rgba(255,255,255,0.04) !important;
+  color: var(--text-main) !important;
 }
 
-/* Adjust image gallery display */
-#image-gallery img {
-  height: 18rem; /* 72 in Tailwind units */
-  object-fit: cover;
-  width: 100%;
+/* Map container overlay */
+.map-container a {
+  border: 1px solid rgba(255,255,255,0.04);
 }
 
-#image-gallery .overflow-hidden {
-  max-width: 100%;
-  margin-bottom: 1.5rem;
+/* Small screens adjustments - keep compact */
+@media (max-width: 768px) {
+  .slider-container { height: 320px; }
+  .slider-container img { height: 320px; }
+  #featured-sidebar-image { width: 180px; height: 180px; }
 }
+
+/* Utility muted color */
+.muted { color: var(--muted) !important; }
