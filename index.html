@@ -140,6 +140,11 @@
                  class="w-full h-full object-cover object-center flex-shrink-0" style="max-height: 400px;">
           </div>
         </div>
+        <!-- overlay wrapper to keep text/buttons visible above slider -->
+        <style>
+          /* small inline safety CSS to ensure overlays are above slider and clickable */
+          .hero-section .overlay-front { position: relative; z-index: 20; }
+        </style>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative mt-8">
           <div class="text-center space-y-8">
             <div class="info-line p-6 bg-white dark:bg-gray-800 backdrop-blur-sm rounded-lg shadow-md inline-block mb-8">
