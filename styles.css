@@ -156,6 +156,8 @@ footer {
   display: block;
 }
 
+/* Media Queries (Adjustments for smaller screens) */
+
 /* ensure slider scales on small screens */
 @media (max-width: 1024px) {
   .banner-wrapper { aspect-ratio: 12 / 6; max-height: 420px; }
