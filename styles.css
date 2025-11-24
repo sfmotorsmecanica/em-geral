@@ -158,23 +158,31 @@ footer {
 /* Media Queries (Adjustments for smaller screens) */
 
 /* ensure slider scales on small screens */
-@media (max-width: 1024px) {
-  .banner-wrapper { aspect-ratio: 12 / 6; /* keep ratio, no fixed px heights */ }
+
 }
+/* --- MOBILE: Show the entire banner without cropping --- */
 @media (max-width: 768px) {
-  .banner-wrapper { aspect-ratio: 9 / 6; /* mobile-focused aspect ratio */ }
-  .slider-slide { object-position: center top; }
-  /* ensure images are fluid on mobile */
-  .slider-container img,
-  .slider-slide {
-    width: 100% !important;
-    height: auto !important;
-    display: block !important;
+  .banner-wrapper {
+    width: 100%;
+    height: auto;       /*Let the height adjust to the image */
+    min-height: 0;      /* remove forced minimum height */
+    aspect-ratio: auto; /* cancels the old aspect ratio */
+  }
+
+  .slider-container {
+    height: auto;       /* Let the container follow the image*/
+  }
+
+  .slider-slide,
+  .slider-container img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;    /* Show the entire image, without cropping */
+    object-position: center;
+    display: block;
   }
 }
-@media (max-width: 420px) {
-  .banner-wrapper { aspect-ratio: 4 / 3; /* compact phone ratio */ }
-}
+
 /* Adjusting the height of the Hero on mobile. */
 @media (max-width: 768px) {
   .hero-section {
