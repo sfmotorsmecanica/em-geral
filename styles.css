@@ -129,84 +129,39 @@ footer {
   border-radius: 8px;
 }
 
-/* Responsive banner and slider */
+/* ================================
+   Banner / Slider responsivo SF MOTORS
+   ================================ */
+/* Wrapper do banner */
 .banner-wrapper {
   width: 100%;
   position: relative;
   overflow: hidden;
 }
-.banner-wrapper img,
-.slider-slide {
+/* Container do slider (várias imagens lado a lado) */
+.slider-container {
+  display: flex;
+  width: 100%;
+}
+
+/* Cada slide (a própria <img>) */
+.slider-slide,
+.banner-wrapper img {
+  flex: 0 0 100%;
   width: 100%;
   height: auto;
   display: block;
-  object-fit: cover;
-  object-position: center;
 }
 
-
-/* Slide images (img elements) */
-.slider-slide {
-  flex: 0 0 100%;
-  width: 100%;
-  height: auto; /* allow natural height to scale with width */
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-
-/* Media Queries (Adjustments for smaller screens) */
-
-/* ensure slider scales on small screens */
-
-}
-/* --- MOBILE: Show the entire banner without cropping --- */
-@media (max-width: 768px) {
-  .banner-wrapper {
-    width: 100%;
-    height: auto;       /*Let the height adjust to the image */
-    min-height: 0;      /* remove forced minimum height */
-    aspect-ratio: auto; /* cancels the old aspect ratio */
-  }
-
-  .slider-container {
-    height: auto;       /* Let the container follow the image*/
-  }
-
-  .slider-slide,
-  .slider-container img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;    /* Show the entire image, without cropping */
-    object-position: center;
-    display: block;
-  }
-}
-
-/* Adjusting the height of the Hero on mobile. */
+/* ================================
+   Ajuste da seção hero no mobile
+   ================================ */
 @media (max-width: 768px) {
   .hero-section {
-    min-height: auto !important;  /* unlock the height on your phone */
-    padding-top: 1.5rem;          /*Optional: reduces the space above */
-    padding-bottom: 1.5rem;       /* reduces space underneath */
-    align-items: stretch;         /* It prevents everything from being centralized in the middle */
-  }
-}
-/* Garantir que o banner tenha altura visível */
-.banner-wrapper {
-  min-height: 180px; /* altura mínima para mobile */
-}
-
-/* Aumenta a altura em telas maiores */
-@media (min-width: 768px) {
-  .banner-wrapper {
-    min-height: 320px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .banner-wrapper {
-    min-height: 420px;
+    min-height: auto !important;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    align-items: flex-start;
   }
 }
 
@@ -277,4 +232,14 @@ input, textarea, select {
   filter: none !important;
   -webkit-filter: none !important;
   box-shadow: none !important;
+}
+/* Fixing the disappearing banner: remove the absolute value from the slider */
+.slider-container {
+  position: relative !important;  /* overwrites the class'absolute' do HTML */
+  height: auto;
+}
+
+/* Ensure the banner has a minimum visible height. */
+.banner-wrapper {
+  min-height: 220px;   /* You can adjust this value later if you want it higher/lower */
 }
