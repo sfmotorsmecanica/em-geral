@@ -132,19 +132,18 @@ footer {
 /* Responsive banner and slider */
 .banner-wrapper {
   width: 100%;
-  /* maintain a proportional aspect ratio: 16:6 ≈ 2.66 (desktop), will scale down on mobile */
-  aspect-ratio: 16 / 6;
-  /* removed fixed pixel heights to allow flexible mobile/desktop scaling */
   position: relative;
   overflow: hidden;
 }
-
-.slider-container {
-  display: flex;
-  height: 100%;
-  align-items: stretch;
-  will-change: transform;
+.banner-wrapper img,
+.slider-slide {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: center;
 }
+
 
 /* Slide images (img elements) */
 .slider-slide {
@@ -175,6 +174,32 @@ footer {
 }
 @media (max-width: 420px) {
   .banner-wrapper { aspect-ratio: 4 / 3; /* compact phone ratio */ }
+}
+/* Adjusting the height of the Hero on mobile. */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: auto !important;  /* unlock the height on your phone */
+    padding-top: 1.5rem;          /*Optional: reduces the space above */
+    padding-bottom: 1.5rem;       /* reduces space underneath */
+    align-items: stretch;         /* It prevents everything from being centralized in the middle */
+  }
+}
+/* Garantir que o banner tenha altura visível */
+.banner-wrapper {
+  min-height: 180px; /* altura mínima para mobile */
+}
+
+/* Aumenta a altura em telas maiores */
+@media (min-width: 768px) {
+  .banner-wrapper {
+    min-height: 320px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .banner-wrapper {
+    min-height: 420px;
+  }
 }
 
 /* Replace previous fixed-height image rule */
