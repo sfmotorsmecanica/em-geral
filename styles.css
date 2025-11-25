@@ -276,3 +276,14 @@ input, textarea, select {
   transform: translateY(-2px);
   box-shadow: 0 10px 26px rgba(0,0,0,0.5);
 }
+/* Fix Banner Mobile Height */
+@media (max-width: 768px) {
+  .banner-wrapper {
+    min-height: 160px !important; /* altura ideal para celular */
+  }
+
+  .slider-container img {
+    height: 160px !important;
+    object-fit: cover !important; /* mantém proporção enquanto corta o excesso */
+  }
+}
