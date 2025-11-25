@@ -1,4 +1,6 @@
-/* Global background and typography */
+/* ================================
+   Paleta global e tipografia
+   ================================ */
 :root{
   --bg-main: #111111;      /* page background */
   --panel-dark: #1F1F1F;   /* inner panel */
@@ -19,33 +21,39 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Override Tailwind/bg classes that were used inline */
+/* Override Tailwind/bg classes usadas inline */
 .bg-white, .bg-white.dark\:bg-gray-800, .bg-red-50, .bg-gray-700 {
   background: transparent !important;
 }
 
-/* Panels, cards and sections */
+/* ================================
+   Painéis, cards e seções
+   ================================ */
 .section-panel,
-.bg-white, .dark\:bg-gray-800, .info-line, .rounded-lg, .slider-container, .hero-section > .max-w-7xl, .map-container a {
+.bg-white, .dark\:bg-gray-800, .info-line, .rounded-lg,
+.hero-section > .max-w-7xl, .map-container a {
   background: linear-gradient(180deg, var(--panel-dark), var(--panel-darker)) !important;
   border: 1px solid rgba(255,255,255,0.04);
   box-shadow: 0 6px 20px rgba(0,0,0,0.6);
   color: var(--text-main);
 }
 
-/* Specific components */
+/* ================================
+   Navegação e logo
+   ================================ */
 nav {
   background: transparent !important;
   border-bottom: 1px solid rgba(255,255,255,0.04);
   backdrop-filter: blur(6px);
 }
 
-/* Logo text */
 nav .text-2xl {
   color: var(--accent) !important;
 }
 
-/* Headings and text */
+/* ================================
+   Títulos e textos
+   ================================ */
 h1, h2, h3, h4 {
   color: var(--text-main) !important;
   font-weight: 700;
@@ -57,12 +65,14 @@ p, li, address, .text-gray-700, .text-gray-600, .text-gray-300 {
   line-height: 1.6;
 }
 
-/* Subtitles lighter gray */
+/* Subtítulos em cinza mais claro */
 .text-gray-900, .text-gray-700, .text-gray-600 {
   color: var(--text-sub) !important;
 }
 
-/* Buttons and accent elements */
+/* ================================
+   Botões e elementos de destaque
+   ================================ */
 button, .glow-button, .inline-flex, .bg-red-600, .bg-green-500 {
   background: linear-gradient(180deg, rgba(242,195,53,0.14), rgba(242,195,53,0.06));
   color: var(--bg-main) !important;
@@ -76,7 +86,7 @@ button:hover, .glow-button:hover, .inline-flex:hover {
   box-shadow: 0 10px 30px rgba(242,195,53,0.12);
 }
 
-/* Accent colored icons */
+/* Ícones em cor de destaque */
 svg path, svg {
   stroke: var(--accent) !important;
   color: var(--accent) !important;
@@ -89,37 +99,41 @@ a, a:hover {
   text-decoration: none;
 }
 
-/* Cards and gallery items */
-.bg-white.dark\:bg-gray-800.rounded-lg, .overflow-hidden.rounded-lg.shadow-lg, .bg-white.dark\:bg-gray-700 {
+/* ================================
+   Cards, galeria e rodapé
+   ================================ */
+.bg-white.dark\:bg-gray-800.rounded-lg,
+.overflow-hidden.rounded-lg.shadow-lg,
+.bg-white.dark\:bg-gray-700 {
   background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)) !important;
   border: 1px solid rgba(255,255,255,0.03);
 }
 
-/* Image gallery overlay text */
+/* Texto de overlay na galeria de imagens */
 #image-gallery .p-4 {
   background: transparent !important;
 }
 
-/* Footer tweaks */
+/* Rodapé */
 footer {
   background: linear-gradient(180deg, var(--panel-darker), rgba(0,0,0,0.6)) !important;
   color: var(--text-sub);
   border-top: 1px solid rgba(255,255,255,0.04);
 }
 
-/* Brand logos */
+/* Logos de marca */
 .brand-logo {
   filter: grayscale(30%) brightness(0.95);
   opacity: 0.95;
 }
 
-/* Partner logos */
+/* Logos de parceiros */
 .partner-logo {
   filter: none;
   border-radius: 8px;
 }
 
-/* Featured sidebar image frame */
+/* Imagem destacada lateral */
 #featured-sidebar-image {
   width: 228px;
   height: 228px;
@@ -130,18 +144,25 @@ footer {
 }
 
 /* ================================
-   Banner / Slider responsivo SF MOTORS
+   BANNER / SLIDER SF MOTORS
    ================================ */
+
 /* Wrapper do banner */
 .banner-wrapper {
   width: 100%;
   position: relative;
   overflow: hidden;
+  min-height: 220px; /* garante altura mínima visível */
 }
-/* Container do slider (várias imagens lado a lado) */
+
+/* Container do slider (várias imagens lado a lado)
+   OBS: sobrescreve o "absolute inset-0 flex" do HTML  */
 .slider-container {
   display: flex;
   width: 100%;
+  position: relative !important;
+  inset: auto !important;
+  height: 100%;
 }
 
 /* Cada slide (a própria <img>) */
@@ -163,22 +184,22 @@ footer {
     padding-bottom: 1.5rem;
     align-items: flex-start;
   }
+
+  /* imagem lateral menor no mobile */
+  #featured-sidebar-image {
+    width: 180px;
+    height: 180px;
+  }
 }
 
-/* Replace previous fixed-height image rule */
-.slider-container img {
-  min-width: 100%;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-/* Ensure hero title stands out */
+/* Destaque no título da hero */
 .hero-section h1 {
   text-shadow: 0 6px 18px rgba(0,0,0,0.6);
 }
 
-/* Forms */
+/* ================================
+   Formulários
+   ================================ */
 input, textarea, select {
   background: rgba(255,255,255,0.02) !important;
   border: 1px solid rgba(255,255,255,0.04) !important;
@@ -190,17 +211,12 @@ input, textarea, select {
   border: 1px solid rgba(255,255,255,0.04);
 }
 
-/* Small screens adjustments - keep compact */
-@media (max-width: 768px) {
-  .slider-container { height: 320px; }
-  .slider-container img { height: 320px; }
-  #featured-sidebar-image { width: 180px; height: 180px; }
-}
-
-/* Utility muted color */
+/* ================================
+   Utilitários e botões flat
+   ================================ */
 .muted { color: var(--muted) !important; }
 
-/* New: flat color buttons for specific top actions without black shadow */
+/* Botão vermelho contato */
 .btn-contact {
   background: #e11d1d !important; /* solid red */
   color: #ffffff !important;
@@ -213,7 +229,7 @@ input, textarea, select {
   transform: translateY(-1px);
 }
 
-/* flat green testimonials button */
+/* Botão verde depoimentos */
 .btn-testimonials {
   background: #059669 !important; /* solid green (emerald-600) */
   color: #ffffff !important;
@@ -227,19 +243,9 @@ input, textarea, select {
   transform: translateY(-1px);
 }
 
-/* ensure global button shadow overrides do not apply to these */
+/* Garantir que sombras globais não afetem estes botões */
 .btn-contact, .btn-testimonials {
   filter: none !important;
   -webkit-filter: none !important;
   box-shadow: none !important;
-}
-/* Fixing the disappearing banner: remove the absolute value from the slider */
-.slider-container {
-  position: relative !important;  /* overwrites the class'absolute' do HTML */
-  height: auto;
-}
-
-/* Ensure the banner has a minimum visible height. */
-.banner-wrapper {
-  min-height: 220px;   /* You can adjust this value later if you want it higher/lower */
 }
