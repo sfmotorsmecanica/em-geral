@@ -23,35 +23,30 @@
           
           <!-- Desktop Navigation -->
           <div class="hidden md:flex items-center space-x-4">
-            <button @click="activeSection = 'contact'" 
-                    :class="{'text-red-600': activeSection === 'contact'}" 
+            <button @click="activeSection = 'services'" 
+                    :class="{'text-red-600': activeSection === 'services'}" 
                     class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
-              Envie sua Dúvida
+              Serviços
             </button>
             <button @click="activeSection = 'videos'" 
                     :class="{'text-red-600': activeSection === 'videos'}" 
                     class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
               Vídeos
             </button>
-            <button @click="activeSection = 'images'" 
-                    :class="{'text-red-600': activeSection === 'images'}" 
-                    class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
-              Imagens
-            </button>
             <button @click="activeSection = 'parts'" 
                     :class="{'text-red-600': activeSection === 'parts'}" 
                     class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
-              Peças/Marca
+              Peças
             </button>
             <button @click="activeSection = 'about'" 
                     :class="{'text-red-600': activeSection === 'about'}" 
                     class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
               Sobre Nós
             </button>
-            <button @click="activeSection = 'services'" 
-                    :class="{'text-red-600': activeSection === 'services'}" 
+            <button @click="activeSection = 'images'" 
+                    :class="{'text-red-600': activeSection === 'images'}" 
                     class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
-              Nossos Serviços
+              Imagens
             </button>
             <button @click="isDarkMode = !isDarkMode" 
                     class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700"
@@ -79,35 +74,30 @@
         <!-- Mobile Navigation Menu -->
         <div :class="{'block': isMenuOpen, 'hidden': !isMenuOpen}" class="md:hidden">
           <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <button @click="activeSection = 'contact'; isMenuOpen = false" 
-                    :class="{'text-red-600': activeSection === 'contact'}"
+            <button @click="activeSection = 'services'; isMenuOpen = false" 
+                    :class="{'text-red-600': activeSection === 'services'}"
                     class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
-              Envie sua Dúvida
+              Serviços
             </button>
             <button @click="activeSection = 'videos'; isMenuOpen = false" 
                     :class="{'text-red-600': activeSection === 'videos'}"
                     class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
               Vídeos
             </button>
-            <button @click="activeSection = 'images'; isMenuOpen = false" 
-                    :class="{'text-red-600': activeSection === 'images'}"
-                    class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
-              Imagens
-            </button>
             <button @click="activeSection = 'parts'; isMenuOpen = false" 
                     :class="{'text-red-600': activeSection === 'parts'}"
                     class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
-              Peças/Marca
+              Peças
             </button>
             <button @click="activeSection = 'about'; isMenuOpen = false" 
                     :class="{'text-red-600': activeSection === 'about'}"
                     class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
               Sobre Nós
             </button>
-            <button @click="activeSection = 'services'; isMenuOpen = false" 
-                    :class="{'text-red-600': activeSection === 'services'}"
+            <button @click="activeSection = 'images'; isMenuOpen = false" 
+                    :class="{'text-red-600': activeSection === 'images'}"
                     class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
-              Nossos Serviços
+              Imagens
             </button>
           </div>
         </div>
