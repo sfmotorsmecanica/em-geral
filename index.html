@@ -2,11 +2,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SF MOTORS - MECÂNICA</title>
+
+  <title>SF MOTORS - Mecânica em São Francisco do Sul | Mecânica, Elétrica e Suspensão</title>
+
+  <!-- SEO Local -->
+  <meta name="description" content="Oficina mecânica em São Francisco do Sul (Centro). SF Motors Mecânica especializada em mecânica geral, elétrica automotiva e suspensão, com transparência e segurança para sua família.">
+  <meta name="keywords" content="mecânica em São Francisco do Sul, oficina mecânica centro, mecânica geral, elétrica automotiva, suspensão, revisão de carro, SF Motors Mecânica, oficina em São Francisco do Sul">
+  <meta name="author" content="SF Motors Mecânica">
+
+  <!-- Open Graph (para compartilhamento em WhatsApp, Facebook, etc.) -->
+  <meta property="og:type" content="business.business">
+  <meta property="og:title" content="SF MOTORS - Mecânica em São Francisco do Sul">
+  <meta property="og:description" content="Mecânica geral, elétrica e suspensão com transparência e segurança para sua família em São Francisco do Sul.">
+  <meta property="og:url" content="https://sfmotorsmecanica.github.io/em-geral/">
+
+  <!-- Dados estruturados para Google (Local Business / Oficina) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoRepair",
+    "name": "SF Motors Mecânica",
+    "url": "https://sfmotorsmecanica.github.io/em-geral/",
+    "telephone": "+55-47-99925-3539",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua Marcilio Dias, 848",
+      "addressLocality": "São Francisco do Sul",
+      "addressRegion": "SC",
+      "postalCode": "89240-000",
+      "addressCountry": "BR"
+    }
+  }
+  </script>
+
+  <!-- Estilos e scripts já existentes -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body class="bg-white dark:bg-gray-900 transition-colors duration-200">
   <div x-data="{ isDarkMode: false, isMenuOpen: false, activeSection: 'home' }">
     <!-- Navigation -->
