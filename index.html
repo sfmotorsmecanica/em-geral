@@ -144,7 +144,7 @@
     <main class="pt-16">
       <!-- Hero! Section -->
      <!-- Hero Section -->
-<section class="hero-section py-16 md:py-20 flex flex-col items-center">
+<section class="hero-section pt-10 pb-16 md:pt-16 md:pb-20 flex flex-col items-center">
   <!-- Banner em destaque -->
   <div class="w-full overflow-hidden relative banner-wrapper">
     <div class="slider-container flex transition-transform duration-1000 ease-in-out">
@@ -157,7 +157,7 @@
 
   <!-- Texto + CTA abaixo do banner -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative mt-8">
-    <div class="text-center space-y-8">
+    <div class="text-center space-y-6">
       <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">
         Sua família segura. Seu carro nas mãos certas.
       </h1>
@@ -166,43 +166,62 @@
         Revisão, diagnóstico e manutenção com transparência total.
         Cuidamos do seu veículo como se fosse da nossa família.
       </p>
+<!-- ⭐ Avaliação no Google (clicável) -->
+<a href="https://www.google.com/maps/place/SF+Motors+Mec%C3%A2nica/@-26.2466336,-48.6350623,17z/data=!3m1!4b1!4m6!3m5!1s0x94d94f45353d0e3b:0x88be14e2dfb918e0!8m2!3d-26.2466336!4d-48.6350623!16s%2Fg%2F11ksxc7rq1?entry=ttu"
+   target="_blank"
+   class="flex flex-col items-center gap-1 mb-4 hover:scale-105 transition-all duration-300">
 
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-      <a
+  <div class="flex gap-1 text-2xl text-yellow-400">
+    <span>★</span>
+    <span>★</span>
+    <span>★</span>
+    <span>★</span>
+    <span>★</span>
+  </div>
+
+  <span class="text-sm text-gray-700 dark:text-gray-200 font-semibold">
+    A oficina mais bem avaliada da cidade.
+  </span>
+
+</a>
+<!-- ⭐ Fim do bloco -->
+      
+   <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+  <!-- Botão vermelho - WhatsApp (mantido igual) -->
+  <a
     href="https://wa.me/5547999253539?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20SF%20Motors%20%F0%9F%9A%97%0AQuero%20saber%20quanto%20fica%20para%20fazer%20uma%20revis%C3%A3o%20no%20meu%20carro.%0APoderia%20me%20passar%20o%20valor%20e%20os%20hor%C3%A1rios%20dispon%C3%ADveis%3F"
-target="_blank"
+    target="_blank"
     rel="noopener noreferrer"
     class="btn-contact px-8 py-3 rounded-full text-lg font-semibold inline-flex items-center justify-center"
   >
     💬 Chamar no WhatsApp
   </a>
 
-        <button
-          @click="activeSection = 'services'"
-          class="bg-yellow-400 text-black px-8 py-3 rounded-full text-lg font-semibold
-                 hover:bg-yellow-500 transition-all duration-300"
-        >
-          Ver serviços disponíveis
-        </button>
-      </div>
+  <!-- Botão amarelo - Serviços (mantido igual) -->
+  <button
+    @click="activeSection = 'services'"
+    class="bg-yellow-400 text-black px-8 py-3 rounded-full text-lg font-semibold
+           hover:bg-yellow-500 transition-all duration-300"
+  >
+    Ver serviços disponíveis
+  </button>
+
+  <!-- Botão verde - O que nossos clientes dizem (AGORA JUNTO) -->
+  <a
+    href="https://www.google.com/maps/search/?api=1&query=SF+MOTORS+MECÂNICA+São+Francisco+do+Sul"
+    target="_blank"
+    class="btn-testimonials px-8 py-3 rounded-full text-lg font-semibold inline-flex items-center justify-center"
+  >
+    O que nossos clientes dizem
+  </a>
+</div>
 
       <!-- Bloco de telefone e endereço -->
          </div>
   </div>
 </section>
 
-      <!-- "O que nossos clientes dizem" Button -->
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative mt-8">
-        <div class="text-center space-y-4">
-          <a href="https://www.google.com/maps/search/?api=1&query=SF+MOTORS+MECÂNICA+São+Francisco+do+Sul"
-             target="_blank"
-             class="btn-testimonials px-8 py-3 rounded-full text-lg font-semibold block w-max mx-auto">
-            O que nossos clientes dizem
-          </a>
-        </div>
-      </div>
-
-      <!-- Dynamic Content Section -->
+     <!-- Dynamic Content Section -->
       <section class="py-12 bg-white dark:bg-gray-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <!-- Videos Section -->
