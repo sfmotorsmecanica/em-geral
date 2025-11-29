@@ -99,6 +99,23 @@ a, a:hover {
   text-decoration: none;
 }
 
+/* Ensure links inside service cards, panels and image cards are clearly visible in yellow */
+#services a,
+.bg-white a,
+.bg-white.dark\:bg-gray-700 a,
+.section-panel a,
+.hero-section a,
+#image-gallery a,
+footer a {
+  color: var(--accent) !important;
+  text-decoration: none !important;
+}
+
+/* Keep action buttons (green/red) text colors intact */
+.btn-contact, .btn-testimonials, .bg-green-500, .bg-red-600 {
+  color: #ffffff !important;
+}
+
 /* ================================
    Cards, galeria e rodapé
    ================================ */
@@ -219,7 +236,7 @@ input, textarea, select {
 /* Botão vermelho contato */
 .btn-contact {
   background: #e11d1d !important; /* solid red */
-  color: #ffffff !important;
+  color: #000000 !important;
   border: none !important;
   box-shadow: none !important;
   transition: background .12s ease, transform .12s ease;
@@ -232,7 +249,7 @@ input, textarea, select {
 /* Botão verde depoimentos */
 .btn-testimonials {
   background: #059669 !important; /* solid green (emerald-600) */
-  color: #ffffff !important;
+  color: #000000 !important;
   border: none !important;
   box-shadow: none !important;
   text-decoration: none;
@@ -249,6 +266,13 @@ input, textarea, select {
   -webkit-filter: none !important;
   box-shadow: none !important;
 }
+
+/* Force these specific CTAs to use black text (override other link styles) */
+.btn-contact, .btn-testimonials, .whatsapp-float {
+  color: #000000 !important;
+  /* keep existing visual styles unchanged */
+}
+
 /* Botão flutuante do WhatsApp */
 .whatsapp-float {
   position: fixed;
@@ -256,7 +280,7 @@ input, textarea, select {
   bottom: 16px;
   z-index: 50;
   background: #25d366;
-  color: #ffffff;
+  color: #000000;
   padding: 10px 16px;
   border-radius: 999px;
   font-size: 14px;
