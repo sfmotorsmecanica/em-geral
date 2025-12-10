@@ -272,7 +272,23 @@ input, textarea, select {
   color: #000000 !important;
   /* keep existing visual styles unchanged */
 }
+/* Ícones nos títulos dos serviços */
+.service-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 
+.service-title-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-title-icon svg {
+  width: 22px;
+  height: 22px;
+}
 /* Botão flutuante do WhatsApp */
 .whatsapp-float {
   position: fixed;
