@@ -369,3 +369,106 @@ input, textarea, select {
   .image-card img { height: 12.5rem; } /* slightly smaller on small screens */
   .team-card { padding: 1.25rem; }
 }
+
+/* ================================
+   Service cards visual polish (SF Motors)
+   Applied only to the services section; keeps existing content & links.
+   ================================ */
+
+.service-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 12px; /* rounded-xl */
+  padding: 1.5rem; /* p-6 */
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.55);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* Hover elevation on desktop only */
+@media (hover: hover) and (pointer: fine) {
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 46px rgba(0,0,0,0.66);
+  }
+}
+
+/* Title styling */
+.service-title {
+  font-size: 1.125rem; /* text-xl */
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+  line-height: 1.15;
+}
+
+/* Description text */
+.service-desc {
+  color: #d1d5db; /* text-gray-300 equivalent */
+  line-height: 1.6;
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+
+/* Actions container */
+.service-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+/* Standardized buttons: primary (solid) and ghost (neutral) */
+.service-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.12s ease;
+  color: #ffffff;
+}
+
+/* Primary (red) CTA */
+.service-btn.primary {
+  background: linear-gradient(180deg,#e11d1d,#c91a1a); /* matches SF brand red */
+  border: 1px solid rgba(0,0,0,0.15);
+  color: #fff;
+}
+
+/* Ghost / neutral button */
+.service-btn.ghost {
+  background: rgba(255,255,255,0.04);
+  color: #f8fafc;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Hover states */
+@media (hover: hover) and (pointer: fine) {
+  .service-btn.primary:hover {
+    filter: brightness(1.06);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+  }
+  .service-btn.ghost:hover {
+    background: rgba(255,255,255,0.06);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(0,0,0,0.42);
+  }
+}
+
+/* Ensure consistent spacing on small screens */
+@media (max-width: 640px) {
+  .service-card { padding: 1.25rem; min-height: auto; }
+  .service-actions { justify-content: flex-start; }
+}
+
+/* Keep buttons' link colors intact for accessibility */
+.service-btn, .service-btn * { color: inherit !important; }
