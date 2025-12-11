@@ -314,3 +314,58 @@ input, textarea, select {
   transform: translateY(-2px);
   box-shadow: 0 10px 26px rgba(0,0,0,0.5);
 }
+
+/* Image and team card refinements added for Imagens / Nossa equipe */
+.image-card,
+.team-card {
+  background: #0f1720; /* deep dark for cards */
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 8px 24px rgba(2,6,23,0.6);
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* hover interaction shared for both sets of cards */
+.image-card:hover,
+.team-card:hover,
+.image-card:focus,
+.team-card:focus {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(2,6,23,0.65);
+}
+
+/* ensure images inside cards keep proportions */
+.image-card img,
+.team-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* force fixed height for gallery thumb images */
+.image-card img {
+  height: 14rem; /* equivalent to h-56 */
+}
+
+/* team avatars */
+.team-card img {
+  width: 6rem;  /* w-24 */
+  height: 6rem;
+  object-fit: cover;
+  border-radius: 9999px;
+  display: block;
+}
+
+/* caption typography */
+.image-card p,
+.team-card p {
+  color: #e6edf3;
+  line-height: 1.4;
+}
+
+/* small screens spacing tweaks */
+@media (max-width: 640px) {
+  .image-card img { height: 12.5rem; } /* slightly smaller on small screens */
+  .team-card { padding: 1.25rem; }
+}
