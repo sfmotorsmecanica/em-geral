@@ -472,3 +472,164 @@ input, textarea, select {
 
 /* Keep buttons' link colors intact for accessibility */
 .service-btn, .service-btn * { color: inherit !important; }
+/* ================================
+   AJUSTE UX MENU – VERSÃO PREMIUM
+   ================================ */
+
+/* Botões do menu desktop */
+.nav-button {
+  position: relative;
+  font-weight: 500;
+  transition: color 0.2s ease, transform 0.15s ease;
+}
+
+/* Hover elegante */
+.nav-button:hover {
+  transform: translateY(-1px);
+}
+
+/* Linha inferior animada (efeito premium) */
+.nav-button::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-color: #dc2626; /* vermelho SF Motors */
+  transition: width 0.25s ease;
+}
+
+.nav-button:hover::after {
+  width: 100%;
+}
+
+/* Estado ativo mais forte */
+.nav-button.text-red-600 {
+  font-weight: 600;
+}
+
+/* Melhor contraste no dark mode */
+.dark .nav-button {
+  color: #e5e7eb;
+}
+
+.dark .nav-button:hover {
+  color: #f87171;
+}
+/* ================================
+   FOOTER – AJUSTE PREMIUM (UX + SEO)
+   ================================ */
+
+/* Base do rodapé */
+footer {
+  background: linear-gradient(180deg, #0f172a 0%, #020617 100%);
+  color: #e5e7eb;
+}
+
+/* Títulos do rodapé */
+footer h3, footer h4 {
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  margin-bottom: 0.75rem;
+}
+
+/* Textos */
+footer p, footer li, footer a {
+  color: #cbd5f5;
+  line-height: 1.6;
+}
+
+/* Links */
+footer a:hover {
+  color: #f87171; /* vermelho SF Motors */
+  text-decoration: none;
+}
+
+/* Blocos do rodapé */
+.footer-card {
+  background: rgba(2, 6, 23, 0.6);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+/* CTA discreto no rodapé */
+.footer-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 9999px;
+  background: #dc2626;
+  color: #ffffff !important;
+  font-weight: 600;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.footer-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(220,38,38,.45);
+}
+
+/* Separador sutil */
+.footer-divider {
+  border-top: 1px solid rgba(255,255,255,.08);
+  margin: 1.25rem 0;
+}
+
+/* Copyright */
+.footer-copy {
+  color: #94a3b8;
+  font-size: 0.875rem;
+}
+/* ================================
+   FOOTER – AJUSTE PREMIUM (forçado)
+   ================================ */
+
+/* 1) Se existir <footer>, aplica nele */
+footer {
+  background: linear-gradient(180deg, #0f172a 0%, #020617 100%) !important;
+  color: #e5e7eb !important;
+}
+
+/* 2) Caso o rodapé esteja em DIV (mais comum no WebSim),
+      aplicamos no ÚLTIMO bloco grande da página */
+body > div:last-of-type {
+  background: linear-gradient(180deg, #0f172a 0%, #020617 100%) !important;
+  color: #e5e7eb !important;
+}
+
+/* Textos e links dentro do rodapé */
+footer a, footer p, footer span, footer li,
+body > div:last-of-type a, body > div:last-of-type p, body > div:last-of-type span, body > div:last-of-type li {
+  color: #cbd5f5 !important;
+}
+
+/* Títulos no rodapé */
+footer h2, footer h3, footer h4,
+body > div:last-of-type h2, body > div:last-of-type h3, body > div:last-of-type h4 {
+  font-weight: 700 !important;
+  letter-spacing: .3px !important;
+}
+
+/* Hover dos links */
+footer a:hover,
+body > div:last-of-type a:hover {
+  color: #f87171 !important;
+  text-decoration: none !important;
+}
+
+/* Linha de separação */
+footer hr,
+body > div:last-of-type hr {
+  border-color: rgba(255,255,255,.10) !important;
+}
+
+/* Texto pequeno (copyright) */
+footer small,
+body > div:last-of-type small {
+  color: #94a3b8 !important;
+}
+
