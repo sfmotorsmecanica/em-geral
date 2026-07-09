@@ -45,7 +45,7 @@
 </head>
 
 <body class="bg-white dark:bg-gray-900 transition-colors duration-200">
-  <div x-data="{ isDarkMode: false, isMenuOpen: false, imagesMenuOpen: false, activeSection: 'home' }">
+  <div x-data="{ isDarkMode: false, isMenuOpen: false, activeSection: 'home' }">
     <!-- Navigation -->
     <nav class="bg-white dark:bg-gray-800 shadow-lg fixed w-full z-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -82,44 +82,11 @@
                     class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
               Sobre Nós
             </button>
-            <div class="relative group">
-              <button @click="activeSection = 'images'" 
-                      :class="{'text-red-600': activeSection === 'images'}" 
-                      class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button flex items-center">
-                Imagens
-                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-
-              <!-- Desktop images dropdown (shows on hover) -->
-              <div class="hidden group-hover:block absolute right-0 mt-2 w-56 bg-white dark:bg-gray-800 rounded-md shadow-lg z-50">
-                <div class="py-2">
-                  <a href="#" @click.prevent="activeSection = 'images'; window.open('01.jpg','_blank')"
-                     class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">01.jpg</a>
-                  <a href="#" @click.prevent="activeSection = 'images'; window.open('02.jpg','_blank')"
-                     class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">02.jpg</a>
-                  <a href="#" @click.prevent="activeSection = 'images'; window.open('03.jpg','_blank')"
-                     class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">03.jpg</a>
-                  <a href="#" @click.prevent="activeSection = 'images'; window.open('04.jpg','_blank')"
-                     class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">04.jpg</a>
-                  <a href="#" @click.prevent="activeSection = 'images'; window.open('05.jpg','_blank')"
-                     class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">05.jpg</a>
-                  <a href="#" @click.prevent="activeSection = 'images'; window.open('06.jpg','_blank')"
-                     class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">06.jpg</a>
-                  <a href="#" @click.prevent="activeSection = 'images'; window.open('07.jpg','_blank')"
-                     class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">07.jpg</a>
-                  <a href="#" @click.prevent="activeSection = 'images'; window.open('08.jpg','_blank')"
-                     class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">08.jpg</a>
-                  <a href="#" @click.prevent="activeSection = 'images'; window.open('09.jpg','_blank')"
-                     class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">09.jpg</a>
-                  <a href="#" @click.prevent="activeSection = 'images'; window.open('10.jpg','_blank')"
-                     class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">10.jpg</a>
-                  <a href="#" @click.prevent="activeSection = 'images'; window.open('11.jpg','_blank')"
-                     class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">11.jpg</a>
-                </div>
-              </div>
-            </div>
+            <button @click="activeSection = 'images'" 
+                    :class="{'text-red-600': activeSection === 'images'}" 
+                    class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
+              Imagens
+            </button>
             <button @click="isDarkMode = !isDarkMode" 
                     class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700"
                     x-on:click="isDarkMode ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark')">
@@ -166,44 +133,11 @@
                     class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
               Sobre Nós
             </button>
-            <div class="relative">
-              <button @click="imagesMenuOpen = !imagesMenuOpen" 
-                      :class="{'text-red-600': activeSection === 'images'}"
-                      class="w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600 flex items-center justify-between">
-                <span>Imagens</span>
-                <svg :class="{'transform rotate-180': imagesMenuOpen}" class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-
-              <!-- Mobile images submenu -->
-              <div x-show="imagesMenuOpen" x-cloak class="mt-2 space-y-1 pl-3">
-                <template>
-                  <a href="#" @click.prevent="activeSection = 'images'; isMenuOpen = false; imagesMenuOpen = false; window.open('01.jpg','_blank')"
-                     class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-red-600">01.jpg</a>
-                  <a href="#" @click.prevent="activeSection = 'images'; isMenuOpen = false; imagesMenuOpen = false; window.open('02.jpg','_blank')"
-                     class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-red-600">02.jpg</a>
-                  <a href="#" @click.prevent="activeSection = 'images'; isMenuOpen = false; imagesMenuOpen = false; window.open('03.jpg','_blank')"
-                     class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-red-600">03.jpg</a>
-                  <a href="#" @click.prevent="activeSection = 'images'; isMenuOpen = false; imagesMenuOpen = false; window.open('04.jpg','_blank')"
-                     class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-red-600">04.jpg</a>
-                  <a href="#" @click.prevent="activeSection = 'images'; isMenuOpen = false; imagesMenuOpen = false; window.open('05.jpg','_blank')"
-                     class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-red-600">05.jpg</a>
-                  <a href="#" @click.prevent="activeSection = 'images'; isMenuOpen = false; imagesMenuOpen = false; window.open('06.jpg','_blank')"
-                     class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-red-600">06.jpg</a>
-                  <a href="#" @click.prevent="activeSection = 'images'; isMenuOpen = false; imagesMenuOpen = false; window.open('07.jpg','_blank')"
-                     class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-red-600">07.jpg</a>
-                  <a href="#" @click.prevent="activeSection = 'images'; isMenuOpen = false; imagesMenuOpen = false; window.open('08.jpg','_blank')"
-                     class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-red-600">08.jpg</a>
-                  <a href="#" @click.prevent="activeSection = 'images'; isMenuOpen = false; imagesMenuOpen = false; window.open('09.jpg','_blank')"
-                     class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-red-600">09.jpg</a>
-                  <a href="#" @click.prevent="activeSection = 'images'; isMenuOpen = false; imagesMenuOpen = false; window.open('10.jpg','_blank')"
-                     class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-red-600">10.jpg</a>
-                  <a href="#" @click.prevent="activeSection = 'images'; isMenuOpen = false; imagesMenuOpen = false; window.open('11.jpg','_blank')"
-                     class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-red-600">11.jpg</a>
-                </template>
-              </div>
-            </div>
+            <button @click="activeSection = 'images'; isMenuOpen = false" 
+                    :class="{'text-red-600': activeSection === 'images'}"
+                    class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
+              Imagens
+            </button>
           </div>
         </div>
       </div>
@@ -510,6 +444,9 @@ class="bg-yellow-400 text-black px-6 py-2.5 rounded-full text-base font-semibold
 
             <script>
               (function () {
+                // Full gallery rendering for the "Imagens" section.
+                // This will render ALL images from the list as responsive cards inside #main-images-carousel
+                // No window.open() usage; clicking a card toggles a focused lightbox view for in-page viewing.
                 const images = [
                   {src: "01.jpg", title: "Escape Danificado?", desc: "Você sabia que um escapamento furado pode aumentar o consumo de combustível?"},
                   {src: "02.jpg", title: "Manutenção da Suspensão", desc: "Quais os riscos de não fazer a manutenção da suspensão? Garanta sua segurança!"},
@@ -527,78 +464,99 @@ class="bg-yellow-400 text-black px-6 py-2.5 rounded-full text-base font-semibold
                   {src: "image CARRO.png", title: "Estrutura da Oficina", desc: "Estrutura da SF Motors com veículos em atendimento."}
                 ];
 
-                const CARDS_PER_GROUP = 3;
-                const groups = Math.ceil(images.length / CARDS_PER_GROUP);
-                const STORAGE_INDEX_KEY = 'sf_main_images_group_index';
-                const STORAGE_TS_KEY = 'sf_main_images_group_ts';
-                const MS_PER_DAY = 24 * 60 * 60 * 1000;
-
-                function computeGroupIndex() {
-                  // Deterministic rotation: use days since epoch modulo groups
-                  const daysSinceEpoch = Math.floor(Date.now() / MS_PER_DAY);
-                  return daysSinceEpoch % groups;
-                }
-
-                function renderGroup(groupIndex) {
+                // Render the complete gallery into #main-images-carousel
+                function renderFullGallery() {
                   const container = document.getElementById('main-images-carousel');
                   if (!container) return;
-                  container.innerHTML = ''; // clear
 
-                  const start = groupIndex * CARDS_PER_GROUP;
-                  for (let i = 0; i < CARDS_PER_GROUP; i++) {
-                    const imgIdx = (start + i) % images.length;
-                    const item = images[imgIdx];
+                  // clear and create a responsive grid wrapper that mirrors original behavior
+                  container.innerHTML = '';
+                  const grid = document.createElement('div');
+                  grid.className = 'grid grid-cols-1 md:grid-cols-3 gap-6';
+                  images.forEach(item => {
                     const card = document.createElement('div');
-                    card.className = 'overflow-hidden rounded-lg shadow-lg bg-transparent';
+                    card.className = 'image-card bg-transparent rounded-lg overflow-hidden shadow-lg';
+                    // show image and a subtle caption (no filename)
                     card.innerHTML = `
-                      <img src="${item.src}" alt="${item.title}" class="w-full h-56 object-cover cursor-pointer" />
-                      <div class="p-4 bg-transparent">
-                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">${item.title}</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-300">${item.desc}</p>
+                      <div class="w-full h-56 overflow-hidden">
+                        <img src="${item.src}" alt="${item.title}" class="w-full h-full object-cover">
+                      </div>
+                      <div class="p-3 bg-transparent">
+                        <h3 class="text-sm font-semibold text-gray-100 mb-1">${item.title}</h3>
+                        <p class="text-xs text-gray-300">${item.desc}</p>
                       </div>
                     `;
-                    // make image open in new tab when clicked
-                    const imgEl = card.querySelector('img');
-                    imgEl.addEventListener('click', function () {
-                      window.open(item.src, '_blank');
+                    // Lightbox: in-page enlargement (no new tab)
+                    card.addEventListener('click', function () {
+                      openLightbox(item);
                     });
-                    container.appendChild(card);
-                  }
+                    grid.appendChild(card);
+                  });
+                  container.appendChild(grid);
                 }
 
-                // Decide and persist selection that changes every 24 hours
-                (function init() {
-                  try {
-                    const storedTs = parseInt(localStorage.getItem(STORAGE_TS_KEY), 10) || 0;
-                    const storedIndex = parseInt(localStorage.getItem(STORAGE_INDEX_KEY), 10);
-                    const now = Date.now();
-                    let groupIndex;
+                // Simple in-page lightbox to view image full size without leaving the site
+                function openLightbox(item) {
+                  // remove existing if present
+                  const existing = document.getElementById('sf-lightbox');
+                  if (existing) existing.remove();
 
-                    // If not set or older than 24h, compute new deterministic group and store timestamp
-                    if (isNaN(storedIndex) || (now - storedTs) >= MS_PER_DAY) {
-                      groupIndex = computeGroupIndex();
-                      localStorage.setItem(STORAGE_INDEX_KEY, groupIndex);
-                      localStorage.setItem(STORAGE_TS_KEY, now);
-                    } else {
-                      groupIndex = storedIndex;
+                  const overlay = document.createElement('div');
+                  overlay.id = 'sf-lightbox';
+                  overlay.style.position = 'fixed';
+                  overlay.style.inset = '0';
+                  overlay.style.background = 'rgba(0,0,0,0.85)';
+                  overlay.style.display = 'flex';
+                  overlay.style.alignItems = 'center';
+                  overlay.style.justifyContent = 'center';
+                  overlay.style.zIndex = '80';
+                  overlay.style.padding = '20px';
+                  overlay.innerHTML = `
+                    <div style="max-width:95%; max-height:95%; width:100%; display:flex; flex-direction:column; align-items:center; gap:10px;">
+                      <img src="${item.src}" alt="${item.title}" style="max-width:100%; max-height:80vh; object-fit:contain; border-radius:8px; box-shadow:0 12px 40px rgba(0,0,0,0.6);" />
+                      <div style="color:#f3f4f6; text-align:center;">
+                        <div style="font-weight:600; font-size:14px; margin-bottom:4px;">${item.title}</div>
+                        <div style="font-size:13px; color:#d1d5db;">${item.desc}</div>
+                      </div>
+                    </div>
+                  `;
+                  // close on click outside or on ESC
+                  overlay.addEventListener('click', function (e) {
+                    if (e.target === overlay) overlay.remove();
+                  });
+                  document.body.appendChild(overlay);
+                  function escHandler(evt) {
+                    if (evt.key === 'Escape') {
+                      overlay.remove();
+                      document.removeEventListener('keydown', escHandler);
                     }
-
-                    renderGroup(groupIndex);
-
-                    // Also update at midnight rollover (in case page stays open)
-                    setInterval(function () {
-                      const lastTs = parseInt(localStorage.getItem(STORAGE_TS_KEY), 10) || 0;
-                      if ((Date.now() - lastTs) >= MS_PER_DAY) {
-                        const newIndex = computeGroupIndex();
-                        localStorage.setItem(STORAGE_INDEX_KEY, newIndex);
-                        localStorage.setItem(STORAGE_TS_KEY, Date.now());
-                        renderGroup(newIndex);
-                      }
-                    }, 60 * 60 * 1000); // check hourly
-                  } catch (e) {
-                    console.error('Image carousel init error', e);
                   }
-                })();
+                  document.addEventListener('keydown', escHandler);
+                }
+
+                // Initialize: render full gallery when this script runs (so submenu activation will display it)
+                document.addEventListener('DOMContentLoaded', function () {
+                  renderFullGallery();
+
+                  // Also re-render when the user selects the images section via the site's Alpine state:
+                  // Observe mutations to #main-images-carousel container to keep behavior identical to original when submenu is used.
+                  // Also listen for custom event to explicitly re-render in case app logic switches sections.
+                  document.addEventListener('showImagesSection', function () {
+                    renderFullGallery();
+                  });
+
+                  // If Alpine navigation buttons set activeSection='images', they already show this container;
+                  // ensure clicking the menu triggers re-render (for parity with original behavior).
+                  const imagesMenuButtons = Array.from(document.querySelectorAll('button, a')).filter(el => {
+                    return el.textContent && el.textContent.trim().toLowerCase().includes('imagens');
+                  });
+                  imagesMenuButtons.forEach(btn => {
+                    btn.addEventListener('click', function () {
+                      // slight delay to allow Alpine to switch views, then render
+                      setTimeout(renderFullGallery, 50);
+                    });
+                  });
+                });
               })();
             </script>
           </div>
@@ -636,52 +594,62 @@ class="bg-yellow-400 text-black px-6 py-2.5 rounded-full text-base font-semibold
 <!-- POR QUE ESCOLHER A SF MOTORS -->
 <section id="porque-escolher" class="py-16 bg-gray-950 text-white mt-12 rounded-xl">
   <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-8">Por que escolher a SF Motors?</h2>
+
+    <!-- Layout: video on the top-left (mobile: stacked) -->
     <div class="flex flex-col md:flex-row items-start gap-8">
-      <!-- Left: Institucional video (visible + audible) -->
+
+      <!-- Video Column (left on desktop) -->
       <div class="w-full md:w-1/3">
-        <div class="bg-gray-900 rounded-xl p-4 shadow-lg">
-          <h3 class="text-lg font-semibold mb-3 text-white">Institucional — SF Motors</h3>
-          <video id="institucional-video" class="w-full h-auto rounded-md" controls playsinline>
-            <source src="Institucional.mp4" type="video/mp4">
-            Seu navegador não suporta reprodução de vídeo.
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg">
+          <video
+            src="Institucional.mp4"
+            controls
+            preload="metadata"
+            playsinline
+            class="w-full h-auto block"
+            aria-label="Vídeo institucional SF Motors"
+          >
+            Seu navegador não suporta vídeo HTML5.
           </video>
-          <p class="text-sm text-gray-300 mt-2">Assista ao vídeo institucional — som ativado por padrão no controle do player.</p>
         </div>
       </div>
 
-      <!-- Right: section content -->
+      <!-- Text / Pillars Column (right on desktop) -->
       <div class="w-full md:w-2/3">
-        <h2 class="text-3xl font-bold mb-6">Por que escolher a SF Motors?</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-
-      <!-- Pilar 1 -->
-      <div class="bg-gray-900 rounded-xl shadow-lg p-8 hover:shadow-xl transition">
-        <div class="text-red-500 text-4xl mb-4 text-center">✔️</div>
-        <h3 class="text-xl font-semibold mb-3 text-center">Transparência Real</h3>
-        <p class="text-gray-300 leading-relaxed text-center">
-          Diagnóstico claro, explicação passo a passo e total honestidade em cada serviço.
+        <p class="mb-6 text-center md:text-left text-lg font-medium text-gray-200">
+          Conheça por que a SF Motors é a escolha certa: técnica, transparência e atendimento humano.
         </p>
-      </div>
 
-      <!-- Pilar 2 -->
-      <div class="bg-gray-900 rounded-xl shadow-lg p-8 hover:shadow-xl transition">
-        <div class="text-red-500 text-4xl mb-4 text-center">⚙️</div>
-        <h3 class="text-xl font-semibold mb-3 text-center">Excelência Técnica</h3>
-        <p class="text-gray-300 leading-relaxed text-center">
-          Mais de 20 anos de experiência garantindo precisão e segurança na manutenção automotiva.
-        </p>
-      </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Pilar 1 -->
+          <div class="bg-gray-900 rounded-xl shadow-lg p-6 hover:shadow-xl transition">
+            <div class="text-red-500 text-4xl mb-3 text-center">✔️</div>
+            <h3 class="text-lg font-semibold mb-2 text-center">Transparência Real</h3>
+            <p class="text-gray-300 leading-relaxed text-center">
+              Diagnóstico claro, explicação passo a passo e total honestidade em cada serviço.
+            </p>
+          </div>
 
-      <!-- Pilar 3 -->
-      <div class="bg-gray-900 rounded-xl shadow-lg p-8 hover:shadow-xl transition">
-        <div class="text-red-500 text-4xl mb-4 text-center">❤️</div>
-        <h3 class="text-xl font-semibold mb-3 text-center">Atendimento Humano</h3>
-        <p class="text-gray-300 leading-relaxed text-center">
-          Cuidado, respeito e acolhimento em cada atendimento. Seu carro é tratado como se fosse nosso.
-        </p>
-      </div>
+          <!-- Pilar 2 -->
+          <div class="bg-gray-900 rounded-xl shadow-lg p-6 hover:shadow-xl transition">
+            <div class="text-red-500 text-4xl mb-3 text-center">⚙️</div>
+            <h3 class="text-lg font-semibold mb-2 text-center">Excelência Técnica</h3>
+            <p class="text-gray-300 leading-relaxed text-center">
+              Mais de 20 anos de experiência garantindo precisão e segurança na manutenção automotiva.
+            </p>
+          </div>
 
+          <!-- Pilar 3 -->
+          <div class="bg-gray-900 rounded-xl shadow-lg p-6 hover:shadow-xl transition">
+            <div class="text-red-500 text-4xl mb-3 text-center">❤️</div>
+            <h3 class="text-lg font-semibold mb-2 text-center">Atendimento Humano</h3>
+            <p class="text-gray-300 leading-relaxed text-center">
+              Cuidado, respeito e acolhimento em cada atendimento. Seu carro é tratado como se fosse nosso.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

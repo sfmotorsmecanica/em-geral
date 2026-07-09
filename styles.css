@@ -131,6 +131,100 @@ footer a {
   background: transparent !important;
 }
 
+/* Ensure the main images carousel occupies full available width and is centered */
+#main-images-carousel {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  box-sizing: border-box;
+  padding: 0 0.5rem; /* small horizontal breathing room */
+}
+
+/* The inner grid rendered by JS - full-width, readable thumbnails, responsive:
+   - 1 column on small screens
+   - 2 columns on medium screens
+   - 3 columns on large screens (desktop)
+   The gallery will occupy the full container width and cards will stretch uniformly. */
+#main-images-carousel > .grid {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.25rem; /* slightly tighter spacing for visual density */
+  align-items: stretch;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+/* Tablet: 2 columns */
+@media (min-width: 640px) {
+  #main-images-carousel > .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+/* Desktop / larger: 3 fixed columns with minimum card width restored */
+@media (min-width: 1024px) {
+  #main-images-carousel > .grid {
+    grid-template-columns: repeat(3, minmax(360px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+/* Ensure gallery fills central column visually and is centered */
+#main-images-carousel {
+  width: 100% !important;
+  max-width: 1200px; /* allow a large readable width while keeping centered */
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  box-sizing: border-box;
+}
+
+/* Make sure image-card stretches to fill the grid cell and centers its content */
+#main-images-carousel .image-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+/* Ensure the image inside the card covers the card area but keeps readable content */
+#main-images-carousel .image-card img {
+  width: 100%;
+  height: 20rem; /* larger thumbnails for easier reading */
+  object-fit: cover;
+  display: block;
+}
+
+/* Slightly increase card padding/caption size for readability */
+#main-images-carousel .image-card .p-3,
+#main-images-carousel .image-card .p-4 {
+  padding: 1rem;
+  font-size: 0.95rem;
+  color: var(--text-sub) !important;
+}
+
+/* Make captions align and not overflow */
+#main-images-carousel .image-card .p-3,
+#main-images-carousel .image-card .p-4 {
+  padding: 0.75rem;
+  background: transparent !important;
+  color: var(--text-sub) !important;
+}
+
+/* Ensure the gallery container is visually centered within the page container */
+#image-gallery {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 /* Rodapé */
 footer {
   background: linear-gradient(180deg, var(--panel-darker), rgba(0,0,0,0.6)) !important;
