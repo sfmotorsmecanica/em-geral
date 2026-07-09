@@ -45,7 +45,7 @@
 </head>
 
 <body class="bg-white dark:bg-gray-900 transition-colors duration-200">
-  <div x-data="{ isDarkMode: false, isMenuOpen: false, activeSection: 'home' }">
+  <div x-data="{ isDarkMode: false, isMenuOpen: false, imagesMenuOpen: false, activeSection: 'home' }">
     <!-- Navigation -->
     <nav class="bg-white dark:bg-gray-800 shadow-lg fixed w-full z-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -82,11 +82,44 @@
                     class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
               Sobre Nós
             </button>
-            <button @click="activeSection = 'images'" 
-                    :class="{'text-red-600': activeSection === 'images'}" 
-                    class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
-              Imagens
-            </button>
+            <div class="relative group">
+              <button @click="activeSection = 'images'" 
+                      :class="{'text-red-600': activeSection === 'images'}" 
+                      class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button flex items-center">
+                Imagens
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              <!-- Desktop images dropdown (shows on hover) -->
+              <div class="hidden group-hover:block absolute right-0 mt-2 w-56 bg-white dark:bg-gray-800 rounded-md shadow-lg z-50">
+                <div class="py-2">
+                  <a href="#" @click.prevent="activeSection = 'images'; window.open('01.jpg','_blank')"
+                     class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">01.jpg</a>
+                  <a href="#" @click.prevent="activeSection = 'images'; window.open('02.jpg','_blank')"
+                     class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">02.jpg</a>
+                  <a href="#" @click.prevent="activeSection = 'images'; window.open('03.jpg','_blank')"
+                     class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">03.jpg</a>
+                  <a href="#" @click.prevent="activeSection = 'images'; window.open('04.jpg','_blank')"
+                     class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">04.jpg</a>
+                  <a href="#" @click.prevent="activeSection = 'images'; window.open('05.jpg','_blank')"
+                     class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">05.jpg</a>
+                  <a href="#" @click.prevent="activeSection = 'images'; window.open('06.jpg','_blank')"
+                     class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">06.jpg</a>
+                  <a href="#" @click.prevent="activeSection = 'images'; window.open('07.jpg','_blank')"
+                     class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">07.jpg</a>
+                  <a href="#" @click.prevent="activeSection = 'images'; window.open('08.jpg','_blank')"
+                     class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">08.jpg</a>
+                  <a href="#" @click.prevent="activeSection = 'images'; window.open('09.jpg','_blank')"
+                     class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">09.jpg</a>
+                  <a href="#" @click.prevent="activeSection = 'images'; window.open('10.jpg','_blank')"
+                     class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">10.jpg</a>
+                  <a href="#" @click.prevent="activeSection = 'images'; window.open('11.jpg','_blank')"
+                     class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">11.jpg</a>
+                </div>
+              </div>
+            </div>
             <button @click="isDarkMode = !isDarkMode" 
                     class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700"
                     x-on:click="isDarkMode ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark')">
@@ -133,11 +166,44 @@
                     class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
               Sobre Nós
             </button>
-            <button @click="activeSection = 'images'; isMenuOpen = false" 
-                    :class="{'text-red-600': activeSection === 'images'}"
-                    class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
-              Imagens
-            </button>
+            <div class="relative">
+              <button @click="imagesMenuOpen = !imagesMenuOpen" 
+                      :class="{'text-red-600': activeSection === 'images'}"
+                      class="w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600 flex items-center justify-between">
+                <span>Imagens</span>
+                <svg :class="{'transform rotate-180': imagesMenuOpen}" class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              <!-- Mobile images submenu -->
+              <div x-show="imagesMenuOpen" x-cloak class="mt-2 space-y-1 pl-3">
+                <template>
+                  <a href="#" @click.prevent="activeSection = 'images'; isMenuOpen = false; imagesMenuOpen = false; window.open('01.jpg','_blank')"
+                     class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-red-600">01.jpg</a>
+                  <a href="#" @click.prevent="activeSection = 'images'; isMenuOpen = false; imagesMenuOpen = false; window.open('02.jpg','_blank')"
+                     class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-red-600">02.jpg</a>
+                  <a href="#" @click.prevent="activeSection = 'images'; isMenuOpen = false; imagesMenuOpen = false; window.open('03.jpg','_blank')"
+                     class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-red-600">03.jpg</a>
+                  <a href="#" @click.prevent="activeSection = 'images'; isMenuOpen = false; imagesMenuOpen = false; window.open('04.jpg','_blank')"
+                     class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-red-600">04.jpg</a>
+                  <a href="#" @click.prevent="activeSection = 'images'; isMenuOpen = false; imagesMenuOpen = false; window.open('05.jpg','_blank')"
+                     class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-red-600">05.jpg</a>
+                  <a href="#" @click.prevent="activeSection = 'images'; isMenuOpen = false; imagesMenuOpen = false; window.open('06.jpg','_blank')"
+                     class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-red-600">06.jpg</a>
+                  <a href="#" @click.prevent="activeSection = 'images'; isMenuOpen = false; imagesMenuOpen = false; window.open('07.jpg','_blank')"
+                     class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-red-600">07.jpg</a>
+                  <a href="#" @click.prevent="activeSection = 'images'; isMenuOpen = false; imagesMenuOpen = false; window.open('08.jpg','_blank')"
+                     class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-red-600">08.jpg</a>
+                  <a href="#" @click.prevent="activeSection = 'images'; isMenuOpen = false; imagesMenuOpen = false; window.open('09.jpg','_blank')"
+                     class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-red-600">09.jpg</a>
+                  <a href="#" @click.prevent="activeSection = 'images'; isMenuOpen = false; imagesMenuOpen = false; window.open('10.jpg','_blank')"
+                     class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-red-600">10.jpg</a>
+                  <a href="#" @click.prevent="activeSection = 'images'; isMenuOpen = false; imagesMenuOpen = false; window.open('11.jpg','_blank')"
+                     class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-red-600">11.jpg</a>
+                </template>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -435,161 +501,106 @@ class="bg-yellow-400 text-black px-6 py-2.5 rounded-full text-base font-semibold
             </div>
           </div>
 
-          <!-- Images Section -->
-          <div x-show="activeSection === 'images'" id="image-gallery" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Image 1: sf_motors_exhaust -->
-            <div class="overflow-hidden rounded-lg shadow-lg">
-              <img src="01.jpg"
-                   alt="Oficina SF Motors com carros em manutenção – São Francisco do Sul"
-                   class="w-full h-72 object-cover transform hover:scale-105 transition-transform duration-300 cursor-pointer"
-                   onclick="window.open(this.src, '_blank')">
-              <div class="p-4 bg-white dark:bg-gray-700">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Escape Danificado?</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                  Você sabia que um escapamento furado pode aumentar o consumo de combustível?
-                </p>
-              </div>
-            </div>
+          <!-- Images Section (rotating 3-per-period on homepage) -->
+          <div x-show="activeSection === 'images'" id="image-gallery" class="space-y-6">
+            <h2 class="text-3xl font-bold text-center mb-6 text-gray-900 dark:text-white">Imagens</h2>
 
-            <!-- Image 2: sf_motors_suspension_maintenance -->
-            <div class="overflow-hidden rounded-lg shadow-lg">
-              <img src="02.jpg"
-                   alt="Fachada da SF Motors Mecânica no Centro de São Francisco do Sul"
-                   class="w-full h-72 object-cover transform hover:scale-105 transition-transform duration-300 cursor-pointer"
-                   onclick="window.open(this.src, '_blank')">
-              <div class="p-4 bg-white dark:bg-gray-700">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Manutenção da Suspensão</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                  Quais os riscos de não fazer a manutenção da suspensão? Garanta sua segurança!
-                </p>
-              </div>
-            </div>
+            <!-- Carousel: shows 3 images at a time, clickable, rotates every 24 hours -->
+            <div id="main-images-carousel" class="grid grid-cols-1 md:grid-cols-3 gap-6" aria-live="polite"></div>
 
-            <!-- Image 3: sf_motors_mechanic -->
-            <div class="overflow-hidden rounded-lg shadow-lg">
-              <img src="03 .jpg"
-                   alt="Serviço de motor e diagnóstico automotivo SF Motors"
-                   class="w-full h-72 object-cover transform hover:scale-105 transition-transform duration-300 cursor-pointer"
-                   onclick="window.open(this.src, '_blank')">
-              <div class="p-4 bg-white dark:bg-gray-700">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Carro superaquecendo?</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                  Seu carro ferveu? Pode ser o sistema de arrefecimento. Venha fazer um check-up!
-                </p>
-              </div>
-            </div>
+            <script>
+              (function () {
+                const images = [
+                  {src: "01.jpg", title: "Escape Danificado?", desc: "Você sabia que um escapamento furado pode aumentar o consumo de combustível?"},
+                  {src: "02.jpg", title: "Manutenção da Suspensão", desc: "Quais os riscos de não fazer a manutenção da suspensão? Garanta sua segurança!"},
+                  {src: "03 .jpg", title: "Carro superaquecendo?", desc: "Seu carro ferveu? Pode ser o sistema de arrefecimento. Venha fazer um check-up!"},
+                  {src: "04.jpg", title: "A Melhor Opção para Seu Carro", desc: "Não importa qual seja sua solicitação. Sempre teremos a melhor opção para você."},
+                  {src: "05.jpg", title: "Limpeza de Bicos Injetores", desc: "Quando limpar os bicos injetores? Mantenha o motor do seu carro eficiente."},
+                  {src: "06.jpg", title: "Troca de Velas de Ignição", desc: "Quando trocar as velas de ignição? Garanta a partida e o desempenho do seu motor."},
+                  {src: "07.jpg", title: "Velas Novas vs. Usadas", desc: "A diferença entre uma vela de ignição nova e uma usada. A manutenção faz toda a diferença!"},
+                  {src: "08.jpg", title: "Troca de Óleo Regular", desc: "A troca regular do óleo do motor é essencial para evitar danos graves. Mantenha seu carro protegido!"},
+                  {src: "09.jpg", title: "Manutenção Completa", desc: "Mantenha seu carro em perfeitas condições com nossa manutenção especializada."},
+                  {src: "10.jpg", title: "Cuidado com o Radiador", desc: "Radiador cheio, motor protegido! Faça a verificação regular do nível da água."},
+                  {src: "11.jpg", title: "Manutenção Preventiva", desc: "Quem cuida, evita o prejuízo! Faça a manutenção preventiva do seu veículo."},
+                  {src: "image MOTOR (1).png", title: "Serviço de Motor", desc: "Serviços de motor e manutenção técnica em execução."},
+                  {src: "image PORTA.png", title: "Fachada da Oficina", desc: "Fachada da SF Motors em São Francisco do Sul."},
+                  {src: "image CARRO.png", title: "Estrutura da Oficina", desc: "Estrutura da SF Motors com veículos em atendimento."}
+                ];
 
-            <!-- Image 4: mecanica_sf_motors_ad -->
-            <div class="overflow-hidden rounded-lg shadow-lg">
-              <img src="04.jpg"
-                   alt="Mecânica SF Motors Ad"
-                   class="w-full h-72 object-cover transform hover:scale-105 transition-transform duration-300 cursor-pointer"
-                   onclick="window.open(this.src, '_blank')">
-              <div class="p-4 bg-white dark:bg-gray-700">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">A Melhor Opção para Seu Carro</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                  Não importa qual seja sua solicitação. Sempre teremos a melhor opção para você.
-                </p>
-              </div>
-            </div>
+                const CARDS_PER_GROUP = 3;
+                const groups = Math.ceil(images.length / CARDS_PER_GROUP);
+                const STORAGE_INDEX_KEY = 'sf_main_images_group_index';
+                const STORAGE_TS_KEY = 'sf_main_images_group_ts';
+                const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
-            <!-- Image 5: fuel_injector_cleaning -->
-            <div class="overflow-hidden rounded-lg shadow-lg">
-              <img src="05.jpg"
-                   alt="Limpeza de Bicos Injetores"
-                   class="w-full h-72 object-cover transform hover:scale-105 transition-transform duration-300 cursor-pointer"
-                   onclick="window.open(this.src, '_blank')">
-              <div class="p-4 bg-white dark:bg-gray-700">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Limpeza de Bicos Injetores</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                  Quando limpar os bicos injetores? Mantenha o motor do seu carro eficiente.
-                </p>
-              </div>
-            </div>
+                function computeGroupIndex() {
+                  // Deterministic rotation: use days since epoch modulo groups
+                  const daysSinceEpoch = Math.floor(Date.now() / MS_PER_DAY);
+                  return daysSinceEpoch % groups;
+                }
 
-            <!-- Image 6: spark_plugs_replacement -->
-            <div class="overflow-hidden rounded-lg shadow-lg">
-              <img src="06.jpg"
-                   alt="Troca de Velas de Ignição"
-                   class="w-full h-72 object-cover transform hover:scale-105 transition-transform duration-300 cursor-pointer"
-                   onclick="window.open(this.src, '_blank')">
-              <div class="p-4 bg-white dark:bg-gray-700">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Troca de Velas de Ignição</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                  Quando trocar as velas de ignição? Garanta a partida e o desempenho do seu motor.
-                </p>
-              </div>
-            </div>
+                function renderGroup(groupIndex) {
+                  const container = document.getElementById('main-images-carousel');
+                  if (!container) return;
+                  container.innerHTML = ''; // clear
 
-            <!-- Image 7: spark_plugs_comparison -->
-            <div class="overflow-hidden rounded-lg shadow-lg">
-              <img src="07.jpg"
-                   alt="Velas Novas vs. Usadas"
-                   class="w-full h-72 object-cover transform hover:scale-105 transition-transform duration-300 cursor-pointer"
-                   onclick="window.open(this.src, '_blank')">
-              <div class="p-4 bg-white dark:bg-gray-700">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Velas Novas vs. Usadas</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                  A diferença entre uma vela de ignição nova e uma usada. A manutenção faz toda a diferença!
-                </p>
-              </div>
-            </div>
+                  const start = groupIndex * CARDS_PER_GROUP;
+                  for (let i = 0; i < CARDS_PER_GROUP; i++) {
+                    const imgIdx = (start + i) % images.length;
+                    const item = images[imgIdx];
+                    const card = document.createElement('div');
+                    card.className = 'overflow-hidden rounded-lg shadow-lg bg-transparent';
+                    card.innerHTML = `
+                      <img src="${item.src}" alt="${item.title}" class="w-full h-56 object-cover cursor-pointer" />
+                      <div class="p-4 bg-transparent">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">${item.title}</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">${item.desc}</p>
+                      </div>
+                    `;
+                    // make image open in new tab when clicked
+                    const imgEl = card.querySelector('img');
+                    imgEl.addEventListener('click', function () {
+                      window.open(item.src, '_blank');
+                    });
+                    container.appendChild(card);
+                  }
+                }
 
-            <!-- Image 8: Oil Change -->
-            <div class="overflow-hidden rounded-lg shadow-lg">
-              <img src="08.jpg"
-                   alt="Troca de Óleo"
-                   class="w-full h-72 object-cover transform hover:scale-105 transition-transform duration-300 cursor-pointer"
-                   onclick="window.open(this.src, '_blank')">
-              <div class="p-4 bg-white dark:bg-gray-700">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Troca de Óleo Regular</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                  A troca regular do óleo do motor é essencial para evitar danos graves. Mantenha seu carro protegido!
-                </p>
-              </div>
-            </div>
+                // Decide and persist selection that changes every 24 hours
+                (function init() {
+                  try {
+                    const storedTs = parseInt(localStorage.getItem(STORAGE_TS_KEY), 10) || 0;
+                    const storedIndex = parseInt(localStorage.getItem(STORAGE_INDEX_KEY), 10);
+                    const now = Date.now();
+                    let groupIndex;
 
-            <!-- Image 9: SF Motors Services -->
-            <div class="overflow-hidden rounded-lg shadow-lg">
-              <img src="09.jpg"
-                   alt="Serviços SF Motors"
-                   class="w-full h-72 object-cover transform hover:scale-105 transition-transform duration-300 cursor-pointer"
-                   onclick="window.open(this.src, '_blank')">
-              <div class="p-4 bg-white dark:bg-gray-700">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Manutenção Completa</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                  Mantenha seu carro em perfeitas condições com nossa manutenção especializada. Cuidamos do seu veículo como se fosse nosso!
-                </p>
-              </div>
-            </div>
+                    // If not set or older than 24h, compute new deterministic group and store timestamp
+                    if (isNaN(storedIndex) || (now - storedTs) >= MS_PER_DAY) {
+                      groupIndex = computeGroupIndex();
+                      localStorage.setItem(STORAGE_INDEX_KEY, groupIndex);
+                      localStorage.setItem(STORAGE_TS_KEY, now);
+                    } else {
+                      groupIndex = storedIndex;
+                    }
 
-            <!-- Image 10: Radiator Check -->
-            <div class="overflow-hidden rounded-lg shadow-lg">
-              <img src="10.jpg"
-                   alt="Verificação do Radiador"
-                   class="w-full h-72 object-cover transform hover:scale-105 transition-transform duration-300 cursor-pointer"
-                   onclick="window.open(this.src, '_blank')">
-              <div class="p-4 bg-white dark:bg-gray-700">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Cuidado com o Radiador</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                  Radiador cheio, motor protegido! Faça a verificação regular do nível da água para garantir o bom funcionamento do seu veículo.
-                </p>
-              </div>
-            </div>
+                    renderGroup(groupIndex);
 
-            <!-- Image 11: Preventive Maintenance -->
-            <div class="overflow-hidden rounded-lg shadow-lg">
-              <img src="11.jpg"
-                   alt="Manutenção Preventiva"
-                   class="w-full h-72 object-cover transform hover:scale-105 transition-transform duration-300 cursor-pointer"
-                   onclick="window.open(this.src, '_blank')">
-              <div class="p-4 bg-white dark:bg-gray-700">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Manutenção Preventiva</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                  Quem cuida, evita o prejuízo! Faça a manutenção preventiva do seu veículo e evite surpresas desagradáveis.
-                </p>
-              </div>
-            </div>
+                    // Also update at midnight rollover (in case page stays open)
+                    setInterval(function () {
+                      const lastTs = parseInt(localStorage.getItem(STORAGE_TS_KEY), 10) || 0;
+                      if ((Date.now() - lastTs) >= MS_PER_DAY) {
+                        const newIndex = computeGroupIndex();
+                        localStorage.setItem(STORAGE_INDEX_KEY, newIndex);
+                        localStorage.setItem(STORAGE_TS_KEY, Date.now());
+                        renderGroup(newIndex);
+                      }
+                    }, 60 * 60 * 1000); // check hourly
+                  } catch (e) {
+                    console.error('Image carousel init error', e);
+                  }
+                })();
+              })();
+            </script>
           </div>
 
           <!-- About Section -->
@@ -625,10 +636,24 @@ class="bg-yellow-400 text-black px-6 py-2.5 rounded-full text-base font-semibold
 <!-- POR QUE ESCOLHER A SF MOTORS -->
 <section id="porque-escolher" class="py-16 bg-gray-950 text-white mt-12 rounded-xl">
   <div class="max-w-6xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-start gap-8">
+      <!-- Left: Institucional video (visible + audible) -->
+      <div class="w-full md:w-1/3">
+        <div class="bg-gray-900 rounded-xl p-4 shadow-lg">
+          <h3 class="text-lg font-semibold mb-3 text-white">Institucional — SF Motors</h3>
+          <video id="institucional-video" class="w-full h-auto rounded-md" controls playsinline>
+            <source src="Institucional.mp4" type="video/mp4">
+            Seu navegador não suporta reprodução de vídeo.
+          </video>
+          <p class="text-sm text-gray-300 mt-2">Assista ao vídeo institucional — som ativado por padrão no controle do player.</p>
+        </div>
+      </div>
 
-    <h2 class="text-3xl font-bold text-center mb-12">Por que escolher a SF Motors?</h2>
+      <!-- Right: section content -->
+      <div class="w-full md:w-2/3">
+        <h2 class="text-3xl font-bold mb-6">Por que escolher a SF Motors?</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
 
       <!-- Pilar 1 -->
       <div class="bg-gray-900 rounded-xl shadow-lg p-8 hover:shadow-xl transition">
