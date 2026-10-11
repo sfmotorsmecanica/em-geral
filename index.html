@@ -1,3 +1,4 @@
+
 <html lang="pt-BR" class="light">
 <head>
   <meta charset="UTF-8">
@@ -76,7 +77,7 @@
               SF MOTORS - MEC&#194;NICA em S&#227;o Francisco do Sul | El&#233;trica, Freios, Suspens&#227;o
             </span>
           </div>
-          
+
           <!-- Desktop Navigation -->
           <div class="hidden md:flex items-center space-x-4">
             <button @click="activeSection = 'services'" 
@@ -84,26 +85,53 @@
                     class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
               Servi&#231;os
             </button>
+
             <button @click="activeSection = 'videos'" 
                     :class="{'text-red-600': activeSection === 'videos'}" 
                     class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
               V&#237;deos
             </button>
+
             <button @click="activeSection = 'parts'" 
                     :class="{'text-red-600': activeSection === 'parts'}" 
                     class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
               Pe&#231;as
             </button>
+
             <button @click="activeSection = 'about'" 
                     :class="{'text-red-600': activeSection === 'about'}" 
                     class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
               Sobre N&#243;s
             </button>
+
             <button @click="activeSection = 'images'" 
                     :class="{'text-red-600': activeSection === 'images'}" 
                     class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button">
               Imagens
             </button>
+
+            <!-- Área do Cliente - menu suspenso -->
+            <details class="relative">
+              <summary
+                class="text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 px-3 py-2 nav-button cursor-pointer select-none"
+                style="list-style:none;"
+              >
+                &#128274; Área do Cliente &#9662;
+              </summary>
+
+              <div class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+                <a
+                  href="https://script.google.com/macros/s/AKfycbxRcJ3YXr9Uk1f4PzFQ2DHUEDpFyiNEH9qsHq5yBjG8K-bTTqKyFboac1hLYw9MMxT2/exec"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="block px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-red-600 hover:text-white transition-colors duration-200"
+                >
+                  <span class="font-semibold block">Acompanhar meu veículo</span>
+                  <span class="text-xs opacity-75 block mt-1">Consulte sua ordem de serviço</span>
+                </a>
+              </div>
+            </details>
+
             <button @click="isDarkMode = !isDarkMode" 
                     class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700"
                     x-on:click="isDarkMode ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark')">
@@ -135,26 +163,51 @@
                     class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
               Servi&#231;os
             </button>
+
             <button @click="activeSection = 'videos'; isMenuOpen = false" 
                     :class="{'text-red-600': activeSection === 'videos'}"
                     class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
               V&#237;deos
             </button>
+
             <button @click="activeSection = 'parts'; isMenuOpen = false" 
                     :class="{'text-red-600': activeSection === 'parts'}"
                     class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
               Pe&#231;as
             </button>
+
             <button @click="activeSection = 'about'; isMenuOpen = false" 
                     :class="{'text-red-600': activeSection === 'about'}"
                     class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
               Sobre N&#243;s
             </button>
+
             <button @click="activeSection = 'images'; isMenuOpen = false" 
                     :class="{'text-red-600': activeSection === 'images'}"
                     class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-red-600">
               Imagens
             </button>
+
+            <!-- Área do Cliente - menu suspenso mobile -->
+            <details class="border-t border-gray-200 dark:border-gray-700 mt-2 pt-2">
+              <summary
+                class="block w-full text-left px-3 py-2 text-base font-semibold text-red-600 dark:text-red-400 cursor-pointer select-none"
+                style="list-style:none;"
+              >
+                &#128274; Área do Cliente &#9662;
+              </summary>
+
+              <div class="ml-3 mb-2 border-l-2 border-red-600">
+                <a
+                  href="https://script.google.com/macros/s/AKfycbxRcJ3YXr9Uk1f4PzFQ2DHUEDpFyiNEH9qsHq5yBjG8K-bTTqKyFboac1hLYw9MMxT2/exec"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="block px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:text-red-600"
+                >
+                  Acompanhar meu veículo
+                </a>
+              </div>
+            </details>
           </div>
         </div>
       </div>
