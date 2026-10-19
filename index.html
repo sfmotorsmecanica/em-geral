@@ -227,6 +227,60 @@
     </div>
   </div>
 
+  <!-- INÍCIO: PROMOÇÃO TEMPORÁRIA SF MOTORS -->
+<section id="promocao-sf-outubro" style="display:none; width:100%; max-width:1200px; margin:24px auto; padding:0 12px; box-sizing:border-box; text-align:center;">
+
+  <picture>
+    <source media="(max-width: 767px)" srcset="SF_Motors_Promocao_Celular.png">
+    <img
+      src="SF_Motors_Promocao_Desktop.png"
+      alt="SF Motors: promoção de troca de pastilhas de freio para modelos populares GM, Volkswagen e Fiat, R$ 250,00 à vista ou em até 2 vezes no cartão. De 19 a 23 de outubro de 2026, mediante agendamento e confirmação do modelo."
+      style="display:block; width:100%; height:auto; border-radius:12px;"
+    >
+  </picture>
+
+  <a
+    href="https://wa.me/5547999253539?text=Ol%C3%A1%21%20Vi%20a%20promo%C3%A7%C3%A3o%20de%20pastilhas%20de%20freio%20no%20site%20da%20SF%20Motors.%20Gostaria%20de%20confirmar%20se%20meu%20carro%20est%C3%A1%20inclu%C3%ADdo%20e%20agendar."
+    target="_blank"
+    rel="noopener noreferrer"
+    style="display:inline-block; background:#079c43; color:#fff; padding:14px 24px; margin-top:12px; border-radius:10px; font-size:17px; font-weight:700; text-decoration:none;"
+  >
+    AGENDAR PELO WHATSAPP
+  </a>
+</section>
+
+<script>
+(function () {
+  const promocao = document.getElementById('promocao-sf-outubro');
+  if (!promocao) return;
+
+  function verificarPromocao() {
+    const agora = new Date();
+    const partes = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/Sao_Paulo',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }).formatToParts(agora);
+
+    const valores = Object.fromEntries(
+      partes.map(parte => [parte.type, parte.value])
+    );
+
+    const dataBrasil = `${valores.year}-${valores.month}-${valores.day}`;
+
+    promocao.style.display =
+      dataBrasil >= '2026-10-19' && dataBrasil <= '2026-10-23'
+        ? 'block'
+        : 'none';
+  }
+
+  verificarPromocao();
+  setInterval(verificarPromocao, 60000);
+})();
+</script>
+<!-- FIM: PROMOÇÃO TEMPORÁRIA SF MOTORS -->
+
   <!-- Texto + CTA abaixo do banner -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative mt-8">
     <div class="text-center space-y-6">
