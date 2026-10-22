@@ -230,6 +230,11 @@
   <!-- INÍCIO: PROMOÇÃO TEMPORÁRIA SF MOTORS -->
 <section id="promocao-sf-outubro" style="display:none; width:100%; max-width:1200px; margin:24px auto; padding:0 12px; box-sizing:border-box; text-align:center; border:3px solid #e30613; border-radius:16px; box-shadow:0 0 22px rgba(227,6,19,0.45);">
 
+  <!-- AVISO DE PRORROGAÇÃO DA PROMOÇÃO -->
+<div style="background:#d90016; color:#ffffff; padding:14px 12px; margin-bottom:12px; border-radius:10px; font-size:clamp(15px,2.5vw,22px); font-weight:800; line-height:1.4; text-align:center;">
+  DEVIDO AO GRANDE SUCESSO, A PROMOÇÃO DE PASTILHAS DE FREIO FOI PRORROGADA ATÉ 30/10/2026!
+</div>
+
   <picture>
     <source media="(max-width: 767px)" srcset="SF_Motors_Promocao_Celular.png">
     <img
@@ -270,7 +275,7 @@
     const dataBrasil = `${valores.year}-${valores.month}-${valores.day}`;
 
     promocao.style.display =
-      dataBrasil >= '2026-10-19' && dataBrasil <= '2026-10-23'
+      dataBrasil >= '2026-10-19' && dataBrasil <= '2026-10-30'
         ? 'block'
         : 'none';
   }
